@@ -1,6 +1,5 @@
-const router = require("express")
-const router = express.Router();
-const Pets = require("../models/Pets");
+const router = require("express").Router();
+// const Pets = require("../models/Pets");
 
 
 // You put the next routes here 👇
