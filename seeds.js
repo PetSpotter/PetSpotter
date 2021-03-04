@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Pets = require('./models/User.model');
+const Pets = require('./models/Pets');
 console.log('test')
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/petspotter";
@@ -9,8 +9,6 @@ mongoose.connect(MONGO_URI, {
 });
 
 const petImport = [
-
-
   {
     "picturelink": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/1200px-Squirrel_posing.jpg",
     "phone": 12312312,
