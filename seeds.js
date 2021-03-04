@@ -9,8 +9,6 @@ mongoose.connect(MONGO_URI, {
 });
 
 const petImport = [
-
-
   {
     "picturelink": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/1200px-Squirrel_posing.jpg",
     "phone": 12312312,
