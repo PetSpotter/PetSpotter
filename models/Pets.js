@@ -1,7 +1,8 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
-const userSchema = new Schema({
+const petSchema = new Schema({
   picturelink: String,
   phone: Number,
   email: String,
@@ -15,8 +16,9 @@ const userSchema = new Schema({
   descriptionofpet: String,
   typeofanimal: String,
   colourofanimal: String,
+
 });
 
-const User = model("User", userSchema);
+const Pets = mongoose.model("Pets", petSchema);
 
-module.exports = User;
+module.exports = Pets;
