@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Pets = require('./models/User.model');
+const Pets = require('./models/Pets');
 console.log('test')
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/petspotter";
