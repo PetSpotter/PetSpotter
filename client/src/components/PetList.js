@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Link } from 'react';
+import { Link } from "react-router-dom";
 
 export default class PetList extends React.Component {
   state = {
@@ -31,10 +31,9 @@ export default class PetList extends React.Component {
           console.log('pet: ', pet)
             return (
               <div>
-                    {/* <Link to={`/${pet._id}`} >Link</Link> */}
-                    <img src={pet.picturelink} alt="pet" />
+              <h5>{pet.lostorfound}</h5>
+                   <Link to={`/${pet._id}`} ><img src={pet.picturelink} alt="pet" /></Link>
                     <h5>{pet.nameofpet}</h5>
-                    <h5>{pet.lostorfound}</h5>
                     <h5>{pet.location}</h5>
               </div>
            )
