@@ -9,6 +9,12 @@ const userSchema = new Schema({
  
 });
 
+const petSchema = new Schema({
+  title: String,
+  description: String,
+  owner: { type: Schema.Types.ObjectId, ref: 'User' }
+});
+
 const User = model("User", userSchema);
 
 module.exports = User;

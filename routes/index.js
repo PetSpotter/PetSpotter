@@ -10,6 +10,23 @@ router.get('/', (req, res, next) => {
   .catch(err => next(err))
 })
 
+router.post('/', (req, res) => {
+const { phone, first_name, last_name, location, lostorfound, textdescription, date, nameofpet, descriptionofpet, typeofanimal, colourofanimal } = req.body;
+
+Pet.create({
+  phone,
+  first_name,
+  last_name,
+  location,
+  lostorfound,
+  textdescription,
+  date,
+  nameofpet,
+  descriptionofpet,
+  typeofanimal,
+  colourofanimal
+});
+
 // gets a specific pet from the pet list
 router.get('/:id', (req, res) => {
   Pets.findById(req.params.id)
@@ -31,7 +48,5 @@ router.get('/:id', (req, res) => {
 //     .then(pet => res.status(200).json(pet))
 //     .catch(err => res.json(err))
 // })
-
-
 
 module.exports = router;
