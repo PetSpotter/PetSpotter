@@ -3,19 +3,19 @@ const Schema = mongoose.Schema;
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const petSchema = new Schema({
-  picturelink: String,
+  pictureLink: String,
   phone: Number,
   email: String,
-  first_name: String,
-  last_name: String,
+  firstName: String,
+  lastName: String,
   location: String,
-  lostorfound: String,
-  textdescription: String,
+  lostOrFound: String,
+  textDescription: String,
   date: String,
-  nameofpet: String,
-  descriptionofpet: String,
-  typeofanimal: String,
-  colourofanimal: String,
+  nameOfPet: String,
+  descriptionOfPet: String,
+  typeOfPet: String,
+  colourOfPet: String,
 
 });
 
