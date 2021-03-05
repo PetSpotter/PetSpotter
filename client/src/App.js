@@ -4,21 +4,21 @@ import Homepage from "./components/Homepage";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import AddPet from "./components/AddPet";
+import PetDetails from "./components/PetDetails";
 import { Switch, Route } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <Route path="/addpet" component={AddPet} />
+            <Route exact path="/:id" component={PetDetails} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/addpet" component={AddPet} />
           </Switch>
-        </Router>
       </div>
     );
   }
