@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const petSchema = new Schema({
   picturelink: String,
   phone: Number,
-  email: String,
-  first_name: String,
-  last_name: String,
+  email: { type: Schema.Types.ObjectId, ref: 'User' },
+  first_name: { type: Schema.Types.ObjectId, ref: 'User' },
+  last_name: { type: Schema.Types.ObjectId, ref: 'User' },
   location: String,
   lostorfound: String,
   textdescription: String,
