@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Search from "../components/Search";
-import AnimalsList from "../components/AnimalsList";
+import Search from "./Search";
+import PetList from "./PetList";
 
 const Homepage = () => {
   return (
     <div>
       <div>
-        <h3>Hi!</h3>
-        <h1>This is Home 🏚</h1>
+        <h1>Pet Spotter</h1>
       </div>
       <ul className="links">
         <li>
@@ -25,7 +24,7 @@ const Homepage = () => {
         <Search />
       </div>
       <div>
-        <AnimalsList />
+        <PetList />
       </div>
     </div>
   );
