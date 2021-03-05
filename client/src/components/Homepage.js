@@ -1,30 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Search from '../components/Search';
-import AnimalsList from '../components/AnimalsList';
+import React from "react";
+import { Link } from "react-router-dom";
+import Search from "./Search";
+import PetList from "./PetList";
 
 const Homepage = () => {
   return (
     <div>
       <div>
-        <h3>Hi!</h3>
-        <h1>This is Home 🏚</h1>
+        <h1>Pet Spotter</h1>
       </div>
-      <ul className="links" >
-          <li><Link to='/Signup'>Signup</Link></li>
-          <li><Link to='/Login'>Login</Link></li>
-          <li><Link to='/AddPet'>Add a Pet</Link></li>
-        </ul>
-       <div>
-        <Search/>
+      
+      <div>
+        <Search />
       </div>
       <div>
-       <AnimalsList/>
-      </div> 
-      
+        <PetList />
+      </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default Homepage;

@@ -1,20 +1,31 @@
 const router = require("express").Router();
-// const Pets = require("../models/Pets");
-
+const Pets = require("../models/Pets");
 
 // You put the next routes here 👇
-// example: router.use("/auth", authRoutes)
-
-router.get("/", (req, res, next) => {
-  res.json("All good in here");
-});
 
 // gets the pet list with all the pets
 router.get('/', (req, res, next) => {
   Pets.find()
-  .then(pet => res.status(200).json(pet, "All the pets"))
+  .then(pet => res.status(200).json(pet))
   .catch(err => next(err))
 })
+
+// router.post('/', (req, res) => {
+// const { phone, first_name, last_name, location, lostorfound, textdescription, date, nameofpet, descriptionofpet, typeofanimal, colourofanimal } = req.body;
+
+// Pet.create({
+//   phone,
+//   first_name,
+//   last_name,
+//   location,
+//   lostorfound,
+//   textdescription,
+//   date,
+//   nameofpet,
+//   descriptionofpet,
+//   typeofanimal,
+//   colourofanimal
+// });
 
 // gets a specific pet from the pet list
 router.get('/:id', (req, res) => {
@@ -37,7 +48,5 @@ router.get('/:id', (req, res) => {
 //     .then(pet => res.status(200).json(pet))
 //     .catch(err => res.json(err))
 // })
-
-
 
 module.exports = router;
