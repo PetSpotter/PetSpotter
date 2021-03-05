@@ -7,6 +7,7 @@ export default class PetDetails extends Component {
         animal: null
     }
 
+
     componentDidMount() {
         const id = this.props.match.params.id;
         axios.get(`http://localhost:5005/api/${id}`)

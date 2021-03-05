@@ -5,9 +5,9 @@ const Schema = mongoose.Schema;
 const petSchema = new Schema({
   pictureLink: String,
   phone: Number,
-  email: String,
-  firstName: String,
-  lastName: String,
+  email: { type: Schema.Types.ObjectId, ref: 'User' },
+  first_name: { type: Schema.Types.ObjectId, ref: 'User' },
+  last_name: { type: Schema.Types.ObjectId, ref: 'User' },
   location: String,
   lostOrFound: String,
   textDescription: String,
@@ -16,7 +16,6 @@ const petSchema = new Schema({
   descriptionOfPet: String,
   typeOfPet: String,
   colourOfPet: String,
-
 });
 
 const Pets = mongoose.model("Pets", petSchema);
