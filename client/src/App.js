@@ -27,20 +27,10 @@ class App extends Component {
         <NavBar user={this.state.user} setUser={this.setUser} />
           <Switch>
             <Route exact path="/" component={Homepage} />
-
-            <Route exact path="/:id"
-              render={props => {
-                if(this.state.user) return <PetDetails {...props} />
-                else return <Redirect to='/' />
-              }}
-            />
-
-            <Route exact path="/signup"
-              render={props => <Signup setUser={this.setState} {...props} /> }
-            />
-            
+            <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/addpet" component={AddPet} />
+            <Route exact path="/:id" component={PetDetails}/>
           </Switch>
       </div>
     );

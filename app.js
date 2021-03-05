@@ -14,18 +14,10 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);
 
-// 👇 Start handling routes here
-// Contrary to the views version, all routes are controled from the routes/index.js
-const allRoutes = require("./routes");
-app.use("/api", allRoutes);
-
-const auth =  require('./routes/auth');
-app.use('/api/auth', auth)
-
 // session configuration
 const session = require('express-session');
 // session store using mongo
-const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo').default;
 
 const mongoose = require('./db/index');
 
@@ -34,11 +26,12 @@ app.use(
     secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
     saveUninitialized: false,
-    //Forces the session to be saved back to the session store, 
+    //Forces the session to be saved back to the session store,
     // even if the session was never modified during the request.
     resave: true,
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection
+    store: MongoStore.create({
+      // mongooseConnection: mongoose.connection
+      mongoUrl: process.env.MONGODB_URI
     })
   })
 )
@@ -91,6 +84,13 @@ passport.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// 👇 Start handling routes here
+// Contrary to the views version, all routes are controled from the routes/index.js
+const allRoutes = require("./routes");
+app.use("/api", allRoutes);
+
+const auth =  require('./routes/auth');
+app.use('/api/auth', auth)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

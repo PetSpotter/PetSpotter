@@ -9,17 +9,7 @@ const Homepage = () => {
       <div>
         <h1>Pet Spotter</h1>
       </div>
-      <ul className="links">
-        <li>
-          <Link to="/Signup">Signup</Link>
-        </li>
-        <li>
-          <Link to="/Login">Login</Link>
-        </li>
-        <li>
-          <Link to="/AddPet">Add a Pet</Link>
-        </li>
-      </ul>
+      
       <div>
         <Search />
       </div>
