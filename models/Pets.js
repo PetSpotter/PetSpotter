@@ -16,7 +16,6 @@ const petSchema = new Schema({
   descriptionOfPet: String,
   typeOfPet: String,
   colourOfPet: String,
-
 });
 
 const Pets = mongoose.model("Pets", petSchema);
