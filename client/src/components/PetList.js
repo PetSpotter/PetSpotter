@@ -26,9 +26,9 @@ export default class PetList extends React.Component {
   render() {
     return (
       <div>
-        {this.state.allPets.map(pet => {
+        {this.state.allPets.map((pet, index) => {
             return (
-              <div>
+              <div key={index}>
               <h5>{pet.lostorfound}</h5>
                    <Link to={`/${pet._id}`} ><img src={pet.picturelink} alt="pet" /></Link>
                     <h5>{pet.nameofpet}</h5>

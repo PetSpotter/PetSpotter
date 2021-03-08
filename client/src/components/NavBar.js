@@ -15,6 +15,9 @@ const navbar = props => {
     <nav className="nav-style">
       <ul>
         <li><Link to='/'>Home</Link></li>
+        {/* <li><Link to="/signup">Signup</Link></li>
+        <li><Link to="/login">Login</Link></li> */}
+
         {props.user ? (
           <>
             <li><Link to="/addpet">Add a Pet</Link></li>
