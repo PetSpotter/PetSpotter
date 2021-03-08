@@ -49,6 +49,7 @@ export default class Signup extends React.Component {
                 onChange={this.handleChange}
                 id='username'
               />
+
             <label htmlFor='password'>Password: </label>
               <input form
                 type='text'
@@ -59,7 +60,7 @@ export default class Signup extends React.Component {
               />
 
             {this.state.message && (
-            <alert variant='danger'>{this.state.message}</alert>)}
+              <alert variant='danger'>{this.state.message}</alert>)}
             <button type='submit'>Signup</button>
 
         </form>

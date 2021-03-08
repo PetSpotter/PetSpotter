@@ -27,17 +27,6 @@ router.post('/', (req, res) => {
   });
 })
 
-router.get('/api/auth/loggedin')
-  .then(response => {
-    const user = response.data
-    ReactDOM.render(
-      <BrowserRouter>
-        <App user={user} />
-      </BrowserRouter>,
-      document.getElementById('root')
-    )
-  })
-
 // gets a specific pet from the pet list
 router.get('/:id', (req, res) => {
   Pets.findById(req.params.id)

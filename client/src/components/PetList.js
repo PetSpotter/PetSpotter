@@ -12,7 +12,6 @@ export default class PetList extends React.Component {
       .get("http://localhost:5005/api")
       .then(response => {
         const data = response.data;
-        console.log('Pet data: ', data);
         this.setState({
           allPets: data
         });
@@ -28,7 +27,6 @@ export default class PetList extends React.Component {
     return (
       <div>
         {this.state.allPets.map(pet => {
-          console.log('pet: ', pet)
             return (
               <div>
               <h5>{pet.lostorfound}</h5>
