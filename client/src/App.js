@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import NavBar from './components/NavBar';
 import Homepage from "./components/Homepage";
@@ -25,9 +25,9 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <NavBar user={this.state.user} setUser={this.setUser} />
+
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/login" component={Login} />
 
             <Route exact path="/addpet"
               render={props => {
@@ -36,15 +36,22 @@ export default class App extends React.Component {
               }}
             />
 
-            <Route exact path="/:id"
+            <Route
+              exact path="/signup"
+              render={props => <Signup setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/login"
+              render={props => <Login setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/:id"
               render={props => {
-                if(this.state.user) return <AddPet {...props} />
+                if(this.state.user) return <PetDetails {...props} />
                 else return <Redirect to='/signup' />
               }}
-            />
-            
-            <Route exact path="/signup"
-              rendeer={props => <Signup setUser={this.setUser} {...props} />}
             />
             
           </Switch>

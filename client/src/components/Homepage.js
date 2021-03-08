@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Search from "./Search";
 import PetList from "./PetList";
 
@@ -37,12 +36,14 @@ render() {
           setLostFoundProp={this.setLostFound}
         />
       </div>
+
       <div>
         <PetList
         query={this.state.query}
         value={this.state.value}
          />
       </div>
+      
     </div>
   );
 };

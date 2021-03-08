@@ -14,7 +14,6 @@ export default class PetList extends React.Component {
       .get("http://localhost:5005/api")
       .then(response => {
         const data = response.data;
-        console.log('Pet data: ', data);
         this.setState({
           allPets: data
         });
@@ -50,10 +49,10 @@ let filteredPets = []
 
     return (
       <div>
-        {filteredPets.map(pet => {
+        {filteredPets.map((pet, index) => {
           console.log('pet: ', pet)
             return (
-              <div>
+              <div key={index}>
               <h5>{pet.lostorfound}</h5>
                    <Link to={`/${pet._id}`} ><img src={pet.picturelink} alt="pet" /></Link>
                     <h5>{pet.nameofpet}</h5>

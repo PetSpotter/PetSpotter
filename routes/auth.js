@@ -28,15 +28,15 @@ router.post('/signup', (req, res) => {
       const hash = bcrypt.hashSync(password, salt);
 
       return User.create({ username: username, password: hash }).then(
-        dbUser => {
+        user => {
 
-          req.login(dbUser, err => {
+          req.login(user, err => {
             if (err) {
               return res
                 .status(500)
                 .json({ message: 'Error while attempting to login' });
             }
-            res.json(dbUser);
+            res.json(user);
           });
         }
       );
