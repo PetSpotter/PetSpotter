@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default class PetList extends React.Component {
+
+
   state = {
     allPets: []
   };
@@ -25,9 +27,30 @@ export default class PetList extends React.Component {
   }
 
   render() {
+let filteredPets = []
+
+    if (this.props.value !== "all") {
+       filteredPets = this.state.allPets.filter((pet) => {
+        return ((pet.typeofanimal.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.textdescription.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.descriptionofpet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.location.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1)
+        && pet.lostorfound.toLowerCase() === this.props.value)
+  });
+  
+    } else {
+      filteredPets = this.state.allPets.filter((pet) => {
+        return (pet.typeofanimal.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.textdescription.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.descriptionofpet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.location.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1)
+
+  });
+ }
+
     return (
       <div>
-        {this.state.allPets.map(pet => {
+        {filteredPets.map(pet => {
           console.log('pet: ', pet)
             return (
               <div>

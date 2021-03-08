@@ -3,21 +3,47 @@ import { Link } from "react-router-dom";
 import Search from "./Search";
 import PetList from "./PetList";
 
-const Homepage = () => {
+export default class Homepage extends React.Component {
+
+  state = {
+    query: "",
+    value: 'all',
+  };
+
+setQuery = queryParam => {
+   this.setState({
+     query: queryParam
+   })
+}
+
+setLostFound = LostFoundParam => {
+  this.setState({
+    value: LostFoundParam
+  })
+}
+
+render() {
   return (
     <div>
       <div>
-        <h1>Pet Spotter</h1>
+        <h1><strong>Pet Spotter</strong></h1>
       </div>
-      
+      <br/>
       <div>
-        <Search />
+        <Search 
+          query={this.state.query}
+          setQueryProp={this.setQuery}
+          value={this.state.value}
+          setLostFoundProp={this.setLostFound}
+        />
       </div>
       <div>
-        <PetList />
+        <PetList
+        query={this.state.query}
+        value={this.state.value}
+         />
       </div>
     </div>
   );
 };
-
-export default Homepage;
+}
