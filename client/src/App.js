@@ -37,6 +37,16 @@ export default class App extends React.Component {
             />
 
             <Route
+              exact path="/signup"
+              render={props => <Signup setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/login"
+              render={props => <Login setUser={this.setUser} {...props} />}
+            />
+
+            <Route
               exact path="/:id"
               render={props => {
                 if(this.state.user) return <PetDetails {...props} />
@@ -44,16 +54,6 @@ export default class App extends React.Component {
               }}
             />
             
-            <Route
-              exact path="/signup"
-              rendeer={props => <Signup setUser={this.setUser} {...props} />}
-            />
-
-            <Route
-              exact path="/login"
-              rendeer={props => <Login setUser={this.setUser} {...props} />}
-            />
-
           </Switch>
       </div>
     );

@@ -12,9 +12,11 @@ const Homepage = () => {
       <div>
         <Search />
       </div>
+
       <div>
         <PetList />
       </div>
+      
     </div>
   );
 };
