@@ -30,7 +30,7 @@ export default class PetDetails extends Component {
         <h1>Pet Details </h1>
         <p>{this.state.animal.nameOfPet}</p>
         <p>
-          <img src={this.state.animal.picturelink} alt="pet" />
+          <img src={this.state.animal.pictureLink} alt="pet" />
         </p>
         <p>{this.state.animal.lostOrFound}</p>
         <p>{this.state.animal.date}</p>

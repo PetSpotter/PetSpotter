@@ -12,34 +12,28 @@ mongoose.connect(MONGO_URI, {
 
 const petImport = [
   {
-    "picturelink": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/1200px-Squirrel_posing.jpg",
+    "pictureLink": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Squirrel_posing.jpg/1200px-Squirrel_posing.jpg",
     "phone": 12312312,
-    "email": "hello@lostsquirrel.com",
-    "first_name": "60420cbfefc67258c097dd0d",
-    "last_name": "Doe",
     "location": "London",
-    "lostorfound": "LOST",
-    "textdescription": "red fluffy squirrel",
+    "lostOrFound": "LOST",
+    "textDescription": "red fluffy squirrel",
     "date": "04/03/21",
-    "nameofpet": "Ian",
-    "descriptionofpet": "red squirrel",
-    "typeofanimal": "squirrel",
-    "colourofanimal": "red"
+    "nameOfPet": "Ian",
+    "descriptionOfPet": "red squirrel",
+    "typeOfPet": "squirrel",
+    "colourOfPet": "red"
   },
   {
-    "picturelink": "https://www.tagesspiegel.de/images/grosser-panda-meng-meng_zoo-berlin/24195486/2-format43.jpg",
+    "pictureLink": "https://www.tagesspiegel.de/images/grosser-panda-meng-meng_zoo-berlin/24195486/2-format43.jpg",
     "phone": 3947234897,
-    "email": "xijinping@panda.net",
-    "first_name": "Xi",
-    "last_name": "Jinping",
     "location": "Beijing",
-    "lostorfound": "LOST",
-    "textdescription": "lost near the zoo",
+    "lostOrFound": "LOST",
+    "textDescription": "lost near the zoo",
     "date": "04/03/21",
-    "nameofpet": "Anotony",
-    "descriptionofpet": "Giant Panda",
-    "typeofanimal": "Giant Panda",
-    "colourofanimal": "Black and white"
+    "nameOfPet": "Antony",
+    "descriptionOfPet": "Giant Panda",
+    "typeOfPet": "Giant Panda",
+    "colourOfPet": "Black and white"
   }
  ]
 

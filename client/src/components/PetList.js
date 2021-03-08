@@ -30,18 +30,18 @@ let filteredPets = []
 
     if (this.props.value !== "all") {
        filteredPets = this.state.allPets.filter((pet) => {
-        return ((pet.typeofanimal.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
-        || pet.textdescription.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
-        || pet.descriptionofpet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        return ((pet.typeOfPet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.textDescription.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.descriptionOfPet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
         || pet.location.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1)
-        && pet.lostorfound.toLowerCase() === this.props.value)
+        && pet.lostOrFound.toLowerCase() === this.props.value)
   });
   
     } else {
       filteredPets = this.state.allPets.filter((pet) => {
-        return (pet.typeofanimal.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
-        || pet.textdescription.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
-        || pet.descriptionofpet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        return (pet.typeOfPet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.textDescription.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
+        || pet.descriptionOfPet.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1 
         || pet.location.toLowerCase().indexOf(this.props.query.toLowerCase()) !== -1)
 
   });
@@ -53,9 +53,9 @@ let filteredPets = []
           console.log('pet: ', pet)
             return (
               <div key={index}>
-              <h5>{pet.lostorfound}</h5>
-                   <Link to={`/${pet._id}`} ><img src={pet.picturelink} alt="pet" /></Link>
-                    <h5>{pet.nameofpet}</h5>
+              <h5>{pet.lostOrFound}</h5>
+                   <Link to={`/${pet._id}`} ><img src={pet.pictureLink} alt="pet" /></Link>
+                    <h5>{pet.nameOfPet}</h5>
                     <h5>{pet.location}</h5>
               </div>
            )
