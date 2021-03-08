@@ -53,7 +53,7 @@ export default class App extends React.Component {
                 else return <Redirect to='/signup' />
               }}
             />
-            
+
           </Switch>
       </div>
     );
