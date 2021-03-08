@@ -10,22 +10,32 @@ router.get('/', (req, res, next) => {
   .catch(err => next(err))
 })
 
-// router.post('/', (req, res) => {
-// const { phone, first_name, last_name, location, lostorfound, textdescription, date, nameofpet, descriptionofpet, typeofanimal, colourofanimal } = req.body;
+router.post('/', (req, res) => {
+  const {owner, location, lostOrFound, textDescription, date, nameOfPet, descriptionOfPet, typeOfPet, colourOfPet } = req.body;
 
-// Pet.create({
-//   phone,
-//   first_name,
-//   last_name,
-//   location,
-//   lostorfound,
-//   textdescription,
-//   date,
-//   nameofpet,
-//   descriptionofpet,
-//   typeofanimal,
-//   colourofanimal
-// });
+  Pet.create({
+    owner,
+    location,
+    lostOrFound,
+    textDescription,
+    date,
+    nameOfPet,
+    descriptionOfPet,
+    typeOfPet,
+    colourOfPet
+  });
+})
+
+router.get('/api/auth/loggedin')
+  .then(response => {
+    const user = response.data
+    ReactDOM.render(
+      <BrowserRouter>
+        <App user={user} />
+      </BrowserRouter>,
+      document.getElementById('root')
+    )
+  })
 
 // gets a specific pet from the pet list
 router.get('/:id', (req, res) => {

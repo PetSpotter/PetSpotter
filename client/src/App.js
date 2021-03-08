@@ -9,7 +9,7 @@ import PetDetails from "./components/PetDetails";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 
-class App extends Component {
+export default class App extends React.Component {
 
   state = {
     user: this.props.user
@@ -27,14 +27,29 @@ class App extends Component {
         <NavBar user={this.state.user} setUser={this.setUser} />
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/addpet" component={AddPet} />
-            <Route exact path="/:id" component={PetDetails}/>
+
+            <Route exact path="/addpet"
+              render={props => {
+                if(this.state.user) return <AddPet {...props} />
+                else return <Redirect to='/signup' />
+              }}
+            />
+
+            <Route exact path="/:id"
+              render={props => {
+                if(this.state.user) return <AddPet {...props} />
+                else return <Redirect to='/signup' />
+              }}
+            />
+            
+            <Route exact path="/signup"
+              rendeer={props => <Signup setUser={this.setUser} {...props} />}
+            />
+            
           </Switch>
       </div>
     );
   }
 }
  
-export default App;
