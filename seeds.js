@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Pets = require('./models/Pets');
+require("dotenv/config");
+
 console.log('test')
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/petspotter";
@@ -38,7 +40,7 @@ const petImport = [
     "descriptionofpet": "Giant Panda",
     "typeofanimal": "Giant Panda",
     "colourofanimal": "Black and white"
-  },
+  }
  ]
 
 

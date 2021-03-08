@@ -11,16 +11,18 @@ mongoose.connect(MONGO_URI, {
 const userImport = [
   {
     first_name: "James",
-    last_name: 54564,
-    password: "smith",
+    last_name: 'smith',
+    password: "1234456",
     email: "smith@hotmail.com",
+    phone: 13456789,
   },
   {
     first_name: "Keith",
     last_name: "Michaels",
     password: "guess",
     email: "keith@dfs.com",
-  },
+    phone: 123456955,
+  }
  ]
 
 

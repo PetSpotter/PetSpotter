@@ -6,13 +6,7 @@ const userSchema = new Schema({
   last_name: String,
   password: String,
   email: String,
- 
-});
-
-const petSchema = new Schema({
-  title: String,
-  description: String,
-  owner: { type: Schema.Types.ObjectId, ref: 'User' }
+  phone: Number,
 });
 
 const User = model("User", userSchema);
