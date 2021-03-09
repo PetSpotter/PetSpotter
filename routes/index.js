@@ -13,8 +13,8 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res) => {
   const {owner, location, lostOrFound, textDescription, date, nameOfPet, descriptionOfPet, typeOfPet, colourOfPet } = req.body;
-
-  Pet.create({
+console.log(req.body, "THIS IS WHAT WE GET FROM ADDING PET")
+  Pets.create({
     owner,
     location,
     lostOrFound,
