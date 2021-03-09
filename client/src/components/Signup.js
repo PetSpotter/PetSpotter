@@ -143,13 +143,14 @@ export default function Signup() {
               
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="first_name"
-                  name="first_name"
+                
                   variant="outlined"
                   required
                   fullWidth
                   id="first_name"
                   label="First Name"
+                  name="first_name"
+                  autoComplete="first_name"
                   type='text'
                   // value={this.state.first_name}
                   // onChange={this.handleChange}
@@ -161,7 +162,7 @@ export default function Signup() {
                   variant="outlined"
                   required
                   fullWidth
-                  id="lastName"
+                  id="last_name"
                   label="Last Name"
                   name="last_name"
                   autoComplete="last_name"
@@ -177,7 +178,7 @@ export default function Signup() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="email"
                   name="email"
                   autoComplete="email"
                   type='text'
@@ -200,7 +201,6 @@ export default function Signup() {
                   // onChange={this.handleChange}
                 />
               </Grid>
-          
             </Grid>
             <Button
               type="submit"
