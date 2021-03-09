@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 
 class Search extends Component {
   
-
   handleLostFound = event => {
     this.props.setLostFoundProp(event.target.value);
   }
@@ -35,8 +34,8 @@ class Search extends Component {
       </form>     
         </div>
       );
-    }}
-  
+    }
+}
    
   export default Search;
  

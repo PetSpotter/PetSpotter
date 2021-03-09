@@ -69,8 +69,8 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from '@material-ui/core/Typography';
 import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
 // import { makeStyles } from "@material-ui/core/styles";
-
 
 export default class PetList extends React.Component {
 
@@ -115,40 +115,42 @@ let filteredPets = []
  }
     return (
       <div>
-      <Grid container spacing={4}>
+        <Container>
+          <Grid container spacing={3} style={{paddingTop: '50px'}}>
+            {filteredPets.map( pet => {
+              return (
+                <div>
+                <Grid item xs key={pet._id} style={{padding: '20px', textDecoration: 'none'}}>
+                  <Link to={`/${pet._id}`} style={{textDecoration: 'none'}} >
+                      <Card style={{
+                            minWidth: 250,
+                            boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
+                            backgroundColor: "#fafafa",
+                          }}
+                      >
+                      <Typography color="secondary" variant="h5">
+                            {pet.lostOrFound}
+                          </Typography>
+                          
+                        <CardMedia style={{ height: "350px" }} image={pet.pictureLink} />
 
-        {filteredPets.map((pet, index) => {
-          return (
-            <div>
+                        <CardContent>
+                          <Typography color="primary" variant="h6">
+                            {pet.nameOfPet}
+                          </Typography>
+                          <Typography color="textSecondary" variant="subtitle2">
+                            {pet.location}
+                          </Typography>
 
-            <Grid item xs={12} key={index} >
-              <Link to={`/${pet._id}`} >
-                  <Card
-                    style={{
-                      maxWidth: 500,
-                      boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
-                      backgroundColor: "#fafafa",
-                    }}
-                  >
-                   <Typography color="secondary" variant="h5">
-                        {pet.lostOrFound}
-                      </Typography>
-                    <CardMedia style={{ height: "400px" }} image={pet.pictureLink} />
-                    <CardContent>
-                      <Typography color="primary" variant="h6">
-                        {pet.nameOfPet}
-                      </Typography>
-                      <Typography color="textSecondary" variant="subtitle2">
-                        {pet.location}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Link>
-            </Grid>
-            </div>
-          )
-        })}
-      </Grid>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                </Grid>
+                </div>
+              )
+            })}
+          </Grid>
+        </Container>
       </div>
     );
   }

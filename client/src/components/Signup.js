@@ -101,14 +101,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function Signup (props) {
 
-const [state, setState] = useState({
-    username: '',
-    password: '',
-    message: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-  });
+  const [state, setState] = useState({
+      username: '',
+      password: '',
+      message: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+    });
 
   const classes = useStyles();
 
@@ -118,6 +118,7 @@ const [state, setState] = useState({
       return {...prevState, [name]: value}
     })
   }
+
   const handleSubmit = e => {
     e.preventDefault();
     const { username, password, first_name, last_name, email } = state
@@ -137,8 +138,9 @@ const [state, setState] = useState({
         }
       })
   };
-    return (
-      <div>
+
+  return (
+    <div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -233,7 +235,7 @@ const [state, setState] = useState({
             >
               Sign Up
             </Button>
-           
+            
             {state.message && ( <alert variant="danger">{state.message}</alert> )}
 
             <Grid container justify="flex-end">
