@@ -58,20 +58,18 @@
 //                 onChange={this.handleChange}
 //                 id='password'
 //               />
-
-//             {this.state.message && (
-//               <alert variant='danger'>{this.state.message}</alert>)}
-//             <button type='submit'>Signup</button>
-
-//         </form>
-//       </div>
+//          </form>
+//        </div>
 //     )
 //   }
 // }
+
+
+
 import React from 'react';
 import { signup } from '../services/auth';
 import { makeStyles } from '@material-ui/core/styles';
-import {useState} from 'react';
+import { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -235,10 +233,13 @@ const [state, setState] = useState({
             >
               Sign Up
             </Button>
+           
+            {state.message && ( <alert variant="danger">{state.message}</alert> )}
+
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
-                  Already have an account? Log in
+                <Link href="/signup" variant="body2">
+                  Still don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
@@ -246,4 +247,5 @@ const [state, setState] = useState({
         </div>
       </Container>
     </div>
-          )};
+  );
+};

@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const AddPet = () => {
-  return (
-    <div>
+export default class addPet extends React.Component {
+  state = { 
+    nameOfPet: '',
+     
+  }
+  
+  render() {
+    return (
       <div>
-        Welcome to Add Pet
-      </div>
-    </div>
-  )
-}
+        <form onSubmit={this.handleFormSubmit}>
+          <label>Title:</label>
+          <input type="text" name="title" value={this.state.nameOfPet} />
 
-export default AddPet;
+          <button>Submit</button>
+        </form>
+      </div>
+    )
+  }
+}
