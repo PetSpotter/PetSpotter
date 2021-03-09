@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class addPet extends Component {
+export default class addPet extends React.Component {
   state = { 
     nameOfPet: '',
      
@@ -18,8 +18,4 @@ class addPet extends Component {
       </div>
     )
   }
-
-
-
-
-export default addPet;
+}
