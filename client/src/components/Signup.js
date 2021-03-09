@@ -110,6 +110,7 @@ const [state, setState] = useState({
     message: '',
     first_name: '',
     last_name: '',
+    email: '',
   });
 
   const classes = useStyles();
@@ -122,14 +123,16 @@ const [state, setState] = useState({
   }
   const handleSubmit = e => {
     e.preventDefault();
-    const { username, password } = state
-    signup( username, password)
+    const { username, password, first_name, last_name, email } = state
+    signup( username, password, first_name, last_name, email)
       .then(data => {
         if(data.message){
           setState({
             message: data.message,
             username: '',
-            password: ''
+            password: '',
+            first_name: '',
+            last_name: '',
           })
         } else {
           props.setUser(data);
@@ -186,7 +189,7 @@ const [state, setState] = useState({
                   variant="outlined"
                   required
                   fullWidth
-                  id="lastName"
+                  id="last_name"
                   label="Last Name"
                   name="last_name"
                   autoComplete="last_name"
