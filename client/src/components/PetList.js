@@ -121,7 +121,7 @@ let filteredPets = []
           return (
             <div>
 
-            <Grid item xs key={index} >
+            <Grid item xs={12} key={index} >
               <Link to={`/${pet._id}`} >
                   <Card
                     style={{
@@ -130,9 +130,12 @@ let filteredPets = []
                       backgroundColor: "#fafafa",
                     }}
                   >
-                    <CardMedia style={{ height: "300px" }} image={pet.pictureLink} />
+                   <Typography color="secondary" variant="h5">
+                        {pet.lostOrFound}
+                      </Typography>
+                    <CardMedia style={{ height: "400px" }} image={pet.pictureLink} />
                     <CardContent>
-                      <Typography color="primary" variant="h5">
+                      <Typography color="primary" variant="h6">
                         {pet.nameOfPet}
                       </Typography>
                       <Typography color="textSecondary" variant="subtitle2">
