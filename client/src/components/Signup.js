@@ -68,26 +68,23 @@
 //     )
 //   }
 // }
-
-
 import React from 'react';
+import { signup } from '../services/auth';
+import { makeStyles } from '@material-ui/core/styles';
+import {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Box from '@material-ui/core/Box';
-// import Checkbox from '@material-ui/core/Checkbox';
-
+import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
+
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -107,11 +104,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signup() {
+export default function Signup (props) {
+
+const [state, setState] = useState({
+    username: '',
+    password: '',
+    message: '',
+    first_name: '',
+    last_name: '',
+  });
 
   const classes = useStyles();
 
+  const handleChange = e => {
+    const { name, value } = e.target;
+    setState(prevState => {
+      return {...prevState, [name]: value}
+    })
+  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    const { username, password } = state
+    signup( username, password)
+      .then(data => {
+        if(data.message){
+          setState({
+            message: data.message,
+            username: '',
+            password: ''
+          })
+        } else {
+          props.setUser(data);
+          props.history.push('/')
+        }
+      })
+  };
     return (
+      <div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -121,9 +150,9 @@ export default function Signup() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-  
-          <form className={classes.form} noValidate>
-  
+
+          <form onSubmit={handleSubmit} className={classes.form} noValidate>
+
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
@@ -136,41 +165,37 @@ export default function Signup() {
                   autoComplete="username"
                   autoFocus
                   type='text'
-                  // value={this.state.username}
-                  // onChange={this.handleChange}
+                  value={state.username}
+                  onChange={(event) => handleChange(event)}
               />
               </Grid>
-              
               <Grid item xs={12} sm={6}>
                 <TextField
-                
+                  autoComplete="first_name"
+                  name="first_name"
                   variant="outlined"
                   required
                   fullWidth
                   id="first_name"
                   label="First Name"
-                  name="first_name"
-                  autoComplete="first_name"
                   type='text'
-                  // value={this.state.first_name}
-                  // onChange={this.handleChange}
+                  value={state.first_name}
+                  onChange={(event) => handleChange(event)}
                 />
-  
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   variant="outlined"
                   required
                   fullWidth
-                  id="last_name"
+                  id="lastName"
                   label="Last Name"
                   name="last_name"
                   autoComplete="last_name"
                   type='text'
-                  // value={this.state.last_name}
-                  // onChange={this.handleChange}
+                  value={state.last_name}
+                  onChange={(event) => handleChange(event)}
                 />
-  
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -178,14 +203,13 @@ export default function Signup() {
                   required
                   fullWidth
                   id="email"
-                  label="email"
+                  label="Email Address"
                   name="email"
                   autoComplete="email"
                   type='text'
-                  // value={this.state.first_name}
-                  // onChange={this.handleChange}
+                  value={state.email}
+                  onChange={(event) => handleChange(event)}
                 />
-  
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -197,8 +221,8 @@ export default function Signup() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
-                  // value={this.state.password}
-                  // onChange={this.handleChange}
+                  value={state.password}
+                  onChange={(event) => handleChange(event)}
                 />
               </Grid>
             </Grid>
@@ -221,6 +245,5 @@ export default function Signup() {
           </form>
         </div>
       </Container>
-    );
-  
-}
+    </div>
+          )};
