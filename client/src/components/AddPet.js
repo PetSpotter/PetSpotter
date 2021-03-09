@@ -70,6 +70,12 @@ export default class addPet extends Component {
     })
 }
 
+handleLostFoundChange = event => {
+  console.log(event.target.value);
+  this.setState({
+      lostOrFound: event.target.value
+  })
+}
   render() {
     return (
       <div>
