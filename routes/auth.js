@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 router.post('/signup', (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, first_name, last_name, phone, email } = req.body;
 
   if (!password || password.length < 8) {
     return res
@@ -27,7 +27,7 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);
 
-      return User.create({ username: username, password: hash }).then(
+      return User.create({ username: username, password: hash, first_name:first_name, phone:phone, email:email, last_name:last_name }).then(
         user => {
 
           req.login(user, err => {
@@ -49,13 +49,11 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, user) => {
     if (err) return res.status(500).json({ message: 'Error while attempting to login' })
-
     if (!user) return res.status(400).json({ message: 'Wrong credentials' })
     
     req.login(user, err => {
       if (err) { return res.status(500).json({ message: 'Error while attempting to login' })
       } return res.status(200).json(user) })
-
   })(req, res)
 });
 
