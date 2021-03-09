@@ -69,7 +69,6 @@ export default class Signup extends React.Component {
   }
 }
 
-
 // import React from 'react';
 // import Avatar from '@material-ui/core/Avatar';
 // import Button from '@material-ui/core/Button';
@@ -140,7 +139,6 @@ export default class Signup extends React.Component {
 //                   // onChange={this.handleChange}
 //               />
 //               </Grid>
-              
 //               <Grid item xs={12} sm={6}>
 //                 <TextField
 //                   autoComplete="first_name"
@@ -222,5 +220,4 @@ export default class Signup extends React.Component {
 //         </div>
 //       </Container>
 //     );
-  
 // }
