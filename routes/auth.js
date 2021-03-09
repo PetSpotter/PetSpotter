@@ -29,7 +29,6 @@ router.post('/signup', (req, res) => {
 
       return User.create({ username: username, password: hash, first_name:first_name, phone:phone, email:email, last_name:last_name }).then(
         user => {
-
           req.login(user, err => {
             if (err) {
               return res
@@ -41,9 +40,7 @@ router.post('/signup', (req, res) => {
         }
       );
     })
-    .catch(err => {
-      res.json(err);
-    });
+    .catch(err => { res.json(err) });
 });
 
 router.post('/login', (req, res, next) => {

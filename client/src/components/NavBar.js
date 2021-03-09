@@ -9,7 +9,7 @@ const handleLogout = props => {
   });
 };
 
-const navbar = props => {
+export default function navbar (props) {
 
   return (
     <nav className="nav-style">
@@ -30,6 +30,3 @@ const navbar = props => {
     </nav>
   )
 }
-
-
-export default navbar;

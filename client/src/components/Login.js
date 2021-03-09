@@ -65,7 +65,7 @@ export default function Login (props) {
         });
       } else {
         props.setUser(data);
-        props.history.push("/petdetails");
+        props.history.push("/");
       }
     });
   };
