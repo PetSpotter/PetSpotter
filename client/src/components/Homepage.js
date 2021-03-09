@@ -2,7 +2,6 @@ import React from "react";
 import Search from "./Search";
 import PetList from "./PetList";
 
-
 export default class Homepage extends React.Component {
 
   state = {
