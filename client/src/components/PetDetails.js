@@ -4,14 +4,10 @@ import { Link } from "react-router-dom";
 
 
 export default class PetDetails extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
+    state = {
     animal: null,
   }
-  this.id = props.match.params.id;
-}
 
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -28,11 +24,15 @@ export default class PetDetails extends Component {
       });
   }
 
-  handleDelete(e) {
-    e.preventDefault();
-    
-  axios.delete(`/api/${this.id}`)
-    .then(res => console.log(res.data));
+  handleDelete = () => {
+  const id = this.props.match.params.id;
+  console.log("This is the IDDDD", id);
+  axios.delete(`/api/${id}`)
+    .then(res => {
+      console.log(res.data)
+      this.props.history.push("/")
+    }
+    );
   }
 
   render() {

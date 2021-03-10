@@ -45,7 +45,9 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
+  console.log("THIS IS THE PET WE WANNA DELETE", req.params.id)
   Pets.findByIdAndDelete(req.params.id)
+  
     .then(pet => res.status(200).json(pet))
     .catch(err => res.json(err))
 })

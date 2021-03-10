@@ -6,11 +6,9 @@ import service from './api/service'
 export default class addPet extends Component {
   constructor(props) {
     super(props);
-  
     this.state = {
-
   }
-  this.id = props.match.params.id;
+ this.id = props.match.params.id;
 }
 
   componentDidMount() {
@@ -43,7 +41,7 @@ export default class addPet extends Component {
       pictureLink,
         id: uuid()
     };
-    const id = this.props.match.params.id;
+  //  const id = this.props.match.params.id;
     console.log(updatedPet);
   axios.put(`/api/${this.id}`, updatedPet)
 }
