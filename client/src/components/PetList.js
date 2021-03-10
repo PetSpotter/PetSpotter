@@ -59,8 +59,8 @@ export default class PetList extends React.Component {
           <Grid container spacing={3} style={{paddingTop: '50px'}}>
             {filteredPets.map( pet => {
               return (
-                <div>
-                  <Grid item xs key={pet._id} style={{padding: '20px', textDecoration: 'none'}}>
+                <div key={pet._id} >
+                  <Grid item xs style={{padding: '20px', textDecoration: 'none'}}>
                       <Card style={{
                             minWidth: 300,
                             boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
@@ -86,7 +86,7 @@ export default class PetList extends React.Component {
                         </CardContent>
                         <CardContent style={{textAlign: 'right', margin:'0px', padding:'0px 15px 15px 15px'}}>
                           <Link to={`/${pet._id}`} >
-                            <Button variant="contained" style={{backgroundColor: '#2a9d8f', color: '#fff'}}>
+                            <Button variant="contained" style={{textTransform:'none', backgroundColor: '#2a9d8f', color: '#fff'}}>
                               Details
                             </Button>
                           </Link>
