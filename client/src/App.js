@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import AddPet from "./components/AddPet";
 import PetDetails from "./components/PetDetails";
+import UpdatePets from "./components/UpdatePet";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 
@@ -44,6 +45,11 @@ export default class App extends React.Component {
             <Route
               exact path="/login"
               render={props => <Login setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/:id/update"
+              render={props => <UpdatePets setUser={this.setUser} {...props} />}
             />
 
             <Route
