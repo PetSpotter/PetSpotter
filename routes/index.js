@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res) => {
-  const {owner, location, lostOrFound, textDescription, date, nameOfPet, descriptionOfPet, typeOfPet, colourOfPet } = req.body;
+  const {owner, location, lostOrFound, textDescription, date, nameOfPet, descriptionOfPet, typeOfPet, colourOfPet, pictureLink } = req.body;
 console.log(req.body, "THIS IS WHAT WE GET FROM ADDING PET")
   Pets.create({
     owner,
@@ -23,7 +23,8 @@ console.log(req.body, "THIS IS WHAT WE GET FROM ADDING PET")
     nameOfPet,
     descriptionOfPet,
     typeOfPet,
-    colourOfPet
+    colourOfPet,
+    pictureLink
   });
 })
 
@@ -34,22 +35,21 @@ router.get('/:id', (req, res) => {
   .catch(err => res.status(200).json(err))
 })
 
-// updates a specific pet
-// router.put('/:id', (req, res) => {
-//   const {  } = req.body
-//   Pets.findByIdAndUpdate( req.params.id, {  }, { new: true } )
-//   .then(pet => res.status(200).json(pet))
-//   .catch(err => res.json(err))
-// })
+//updates a specific pet
+router.put('/:id', (req, res) => {
+  const {  } = req.body
+  Pets.findByIdAndUpdate( req.params.id, {  }, { new: true } )
+  .then(pet => res.status(200).json(pet))
+  .catch(err => res.json(err))
+})
 
-// deletes a specific pet
-// router.delete('/:id', (req, res) => {
-//   Pets.findByIdAndDelete(req.params.id)
-//     .then(pet => res.status(200).json(pet))
-//     .catch(err => res.json(err))
-// })
+router.delete('/:id', (req, res) => {
+  Pets.findByIdAndDelete(req.params.id)
+    .then(pet => res.status(200).json(pet))
+    .catch(err => res.json(err))
+})
 
-router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
+router.post('/upload', uploader.single('pictureLink'), (req, res, next) => {
   // console.log('file is: ', req.file)
  
   if (!req.file) {
