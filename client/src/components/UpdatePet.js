@@ -190,7 +190,6 @@ handleFileUpload = e => {
               <Grid item xs={12}>
                 <TextField
                   variant="standard"
-                  required
                   fullWidth
                   id="Type"
                   label="What kind of animal is it?"
