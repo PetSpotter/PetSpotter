@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+// import TextField from "@material-ui/core/TextField";
+// import Autocomplete from "@material-ui/lab/Autocomplete";
 
 class Search extends Component {
-  
   handleLostFound = (event) => {
     this.props.setLostFoundProp(event.target.value);
   };
@@ -11,6 +12,7 @@ class Search extends Component {
   };
 
   render() {
+
     return (
       <div>
         <form className="search-form">
@@ -26,6 +28,7 @@ class Search extends Component {
               <option value="found">Found</option>
             </select>
           </label>
+
           <input
             className="search-window"
             type="text"
@@ -41,3 +44,21 @@ class Search extends Component {
 }
 
 export default Search;
+
+
+ /* <Autocomplete
+        style={{ width: 300 }}
+        freeSolo
+        options={top100Films.map((option) => option.title)}
+        renderInput={(params) => (
+          <TextField {...params}
+          label="Search"
+          margin="normal"
+          variant="outlined" />
+        )}
+
+        type="text"
+        name="query"
+        value={this.props.query}
+        onChange={this.handleChange}
+      /> */

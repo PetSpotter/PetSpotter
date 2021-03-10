@@ -1,3 +1,4 @@
+// https://coolors.co/264653-2a9d8f-e9c46a-f4a261-e76f51
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
