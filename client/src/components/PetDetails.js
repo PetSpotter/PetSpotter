@@ -21,6 +21,12 @@ export default class PetDetails extends Component {
       });
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    axios.delete('http://localhost:5005/api/:id')
+    .then(res => console.log(res.data));
+  }
+
   render() {
     if (this.state.animal === null) {
       return <h3>Animal Not Found</h3>;
@@ -44,6 +50,8 @@ export default class PetDetails extends Component {
         </p>
         <p>{this.state.animal.phone}</p>
         <p>{this.state.animal.email}</p>
+        <button onClick={this.handleDelete}>Delete this effing animal</button>
+        <button>Update this effing animal</button>
       </div>
     );
   }

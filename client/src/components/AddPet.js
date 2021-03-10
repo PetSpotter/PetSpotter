@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
+import service from './api/service'
 
 export default class addPet extends Component {
 
@@ -13,10 +14,11 @@ export default class addPet extends Component {
     descriptionOfPet: '',
     typeOfPet: '',
     colourOfPet: '',
+    pictureLink: '',
   }
   handleFormSubmit = event => {
     event.preventDefault();
-    const { nameOfPet, location, lostOrFound, textDescription, date, descriptionOfPet, typeOfPet, colourOfPet } = this.state;
+    const { nameOfPet, location, lostOrFound, textDescription, date, descriptionOfPet, typeOfPet, colourOfPet, pictureLink, } = this.state;
     const newPet = {
       nameOfPet,
       location,
@@ -26,6 +28,7 @@ export default class addPet extends Component {
       descriptionOfPet,
       typeOfPet,
       colourOfPet,
+      pictureLink,
         id: uuid()
     };
 
@@ -39,6 +42,7 @@ export default class addPet extends Component {
       descriptionOfPet: '',
       typeOfPet: '',
       colourOfPet: '',
+      pictureLink: '',
     });
 }
 
@@ -76,7 +80,39 @@ handleLostFoundChange = event => {
       lostOrFound: event.target.value
   })
 }
+
+handleFileUpload = e => {
+  console.log('The file to be uploaded is: ', e.target.files[0]);
+
+  const uploadData = new FormData();
+  uploadData.append('pictureLink', e.target.files[0]);
+
+  service
+    .handleUpload(uploadData)
+    .then(response => {
+      this.setState({ pictureLink: response.secure_url });
+    })
+    .catch(err => {
+      console.log('Error while uploading the file: ', err);
+    });
+};
+
+handleSubmit = e => {
+  e.preventDefault();
+
+  service
+    .saveNewThing(this.state)
+    .then(res => {
+      console.log('added: ', res);
+    })
+    .catch(err => {
+      console.log('Error while adding the thing: ', err);
+    });
+};
+
+
   render() {
+    
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
@@ -95,6 +131,11 @@ handleLostFoundChange = event => {
           <label>Date:</label>
           <input type="text" name="date" value={this.state.date} placeholder = "When did you lose/find" onChange={this.handleDateChange}/>
           <button type='submit'>Submit</button>
+          <div className="App">
+       <input type="file" name="avatar" onChange={this.handleFileUpload} />
+       <button type="button" onClick={this.submit} > Upload </button>
+  
+      </div>
         </form>
       </div>
     )

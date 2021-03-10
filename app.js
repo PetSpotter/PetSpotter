@@ -2,6 +2,11 @@
 // https://www.npmjs.com/package/dotenv
 require("dotenv/config");
 
+const cors = require('cors');
+
+
+
+
 // ℹ️ Connects to the database
 require("./db");
 
@@ -20,6 +25,13 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
 
 const mongoose = require('./db/index');
+
+app.use(
+  cors({
+    // this could be multiple domains/origins, but we will allow just our React app
+    origin: ['http://localhost:3000']
+  })
+);
 
 app.use(
   session({
