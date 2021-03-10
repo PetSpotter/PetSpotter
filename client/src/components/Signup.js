@@ -144,7 +144,7 @@ export default function Signup (props) {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
+          <Avatar className={classes.avatar} style={{backgroundColor: '#264653'}}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
@@ -156,7 +156,7 @@ export default function Signup (props) {
             <Grid container spacing={2}>
             <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   id="username"
@@ -173,7 +173,7 @@ export default function Signup (props) {
                 <TextField
                   autoComplete="first_name"
                   name="first_name"
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   id="first_name"
@@ -185,7 +185,7 @@ export default function Signup (props) {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   id="last_name"
@@ -199,7 +199,7 @@ export default function Signup (props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   id="email"
@@ -213,7 +213,7 @@ export default function Signup (props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   name="password"
@@ -232,6 +232,7 @@ export default function Signup (props) {
               variant="contained"
               color="primary"
               className={classes.submit}
+              style={{backgroundColor: '#264653'}}
             >
               Sign Up
             </Button>
@@ -240,8 +241,8 @@ export default function Signup (props) {
 
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="/signup" variant="body2">
-                  Still don't have an account? Sign Up
+                <Link href="/login" variant="body2">
+                  Already have an account? Login
                 </Link>
               </Grid>
             </Grid>
