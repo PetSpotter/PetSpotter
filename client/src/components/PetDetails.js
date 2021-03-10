@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 
 export default class PetDetails extends Component {
   state = {
@@ -23,7 +25,9 @@ export default class PetDetails extends Component {
 
   handleDelete(e) {
     e.preventDefault();
-    axios.delete('http://localhost:5005/api/:id')
+    const id = this.props.match.params.id;
+    console.log(id);
+  axios.delete(`http://localhost:5005/api/${id}`)
     .then(res => console.log(res.data));
   }
 
@@ -51,7 +55,7 @@ export default class PetDetails extends Component {
         <p>{this.state.animal.phone}</p>
         <p>{this.state.animal.email}</p>
         <button onClick={this.handleDelete}>Delete this effing animal</button>
-        <button>Update this effing animal</button>
+        <Link to={`/${this.props.match.params.id}/update`}><button onClick={this.handleUpdate}>Update this effing animal</button></Link>
       </div>
     );
   }
