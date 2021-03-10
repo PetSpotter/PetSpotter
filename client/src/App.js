@@ -54,10 +54,11 @@ export default class App extends React.Component {
 
             <Route
               exact path="/:id"
-              render={props => {
-                if(this.state.user) return <PetDetails {...props} />
-                else return <Redirect to='/login' />
-              }}
+              render={props => <PetDetails {...props} />}
+              // render={props => {
+              //   if(this.state.user) return (<PetDetails {...props} match={match} />)
+              //   else return (<Redirect to='/login' />)
+              // }}
             />
 
           </Switch>
