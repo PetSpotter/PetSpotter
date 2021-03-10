@@ -76,7 +76,7 @@ export default function Login (props) {
         <CssBaseline />
         <div className={classes.paper}>
 
-          <Avatar className={classes.avatar}>
+          <Avatar className={classes.avatar} style={{backgroundColor: '#2a9d8f'}}>
             <LockOutlinedIcon />
           </Avatar>
 
@@ -88,7 +88,7 @@ export default function Login (props) {
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   id="username"
@@ -104,7 +104,7 @@ export default function Login (props) {
 
               <Grid item xs={12}>
                 <TextField
-                  variant="outlined"
+                  variant="standard"
                   required
                   fullWidth
                   name="password"
@@ -124,6 +124,7 @@ export default function Login (props) {
               variant="contained"
               color="secondary"
               className={classes.submit}
+              style={{backgroundColor: '#2a9d8f'}}
             >
               Login
             </Button>

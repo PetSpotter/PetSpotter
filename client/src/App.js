@@ -50,7 +50,7 @@ export default class App extends React.Component {
               exact path="/:id"
               render={props => {
                 if(this.state.user) return <PetDetails {...props} />
-                else return <Redirect to='/signup' />
+                else return <Redirect to='/login' />
               }}
             />
 

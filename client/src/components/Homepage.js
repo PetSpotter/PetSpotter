@@ -25,10 +25,6 @@ render() {
   return (
     <div>
       <div>
-        <h1><strong>Pet Spotter</strong></h1>
-      </div>
-      <br/>
-      <div>
         <Search 
           query={this.state.query}
           setQueryProp={this.setQuery}
