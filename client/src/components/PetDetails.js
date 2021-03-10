@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 
 export default class PetDetails extends Component {
 
@@ -49,8 +52,8 @@ export default class PetDetails extends Component {
         <p>{this.state.animal.lostOrFound}</p>
         <p>{this.state.animal.date}</p>
         <p>Type of animal:{this.state.animal.typeOfPet}</p>
-        <p>Colour:{this.state.animal.colourOfPet}</p>
         <p>Description:{this.state.animal.descriptionOfPet}</p>
+        <p>Additional infomation:{this.state.animal.textDescription}</p>
         <h3>Contact information</h3>
         <p>
           {this.state.animal.firstName}
@@ -58,8 +61,21 @@ export default class PetDetails extends Component {
         </p>
         <p>{this.state.animal.phone}</p>
         <p>{this.state.animal.email}</p>
-        <button onClick={this.handleDelete}>Delete this pet</button>
-        <Link to={`/${this.props.match.params.id}/update`}><button onClick={this.handleUpdate}>Update</button></Link>
+      
+        <IconButton aria-label="delete" onClick={this.handleDelete}>
+          <DeleteIcon fontSize="large"/> 
+        </IconButton>
+  
+        <Link to={`/${this.props.match.params.id}/update`} style={{textDecoration:'none'}}>
+        <Button
+        onClick={this.handleUpdate}
+        variant="contained"
+        color="primary"
+        size="large"
+        startIcon={<SaveIcon />}
+      >
+        Update Pet
+      </Button></Link>
       </div>
     );
   }
