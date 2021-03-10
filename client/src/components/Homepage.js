@@ -25,6 +25,7 @@ render() {
   return (
     <div>
       <div>
+   
         <Search 
           query={this.state.query}
           setQueryProp={this.setQuery}
