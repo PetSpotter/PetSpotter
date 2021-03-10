@@ -7,18 +7,19 @@ export default class addPet extends Component {
   constructor(props) {
     super(props);
     this.state = {
-  }
+      animal: null,
+    }
  this.id = props.match.params.id;
 }
 
-  componentDidMount() {
+  componentDidMount = () =>{
     const id = this.props.match.params.id;
     axios
       .get(`/api/${id}`)
       .then((response) => {
         console.log(response);
         this.setState({
-          state: response.data,
+          animal: response.data,
         });
       })
       .catch((err) => {
@@ -107,7 +108,7 @@ handleFileUpload = e => {
           <label>Name of pet:</label>
           <input type="text" name="nameOfPet" value={this.state.nameOfPet} placeholder = {this.state.nameOfPet} onChange={this.handleNameChange}/>
           <label>Location:</label>
-          <input type="text" name="location" value={this.state.location} placeholder = "Enter location" onChange={this.handleLocationChange}/>
+          <input type="text" name="location" value={this.state.location} placeholder = {this.state.location} onChange={this.handleLocationChange}/>
           <label>
           <select className="select-lost-found" value={this.state.lostOrFound} onChange={this.handleLostFoundChange}>
             <option value="lost">Lost</option>
@@ -115,13 +116,13 @@ handleFileUpload = e => {
           </select>
         </label>
         <label>Description:</label>
-          <input type="text" name="description" value={this.state.textDescription} placeholder = "Describe the animal" onChange={this.handleDescriptionChange}/>
+          <input type="text" name="description" value={this.state.textDescription} placeholder = {this.state.textDescription} onChange={this.handleDescriptionChange}/>
           <label>Date:</label>
-          <input type="text" name="date" value={this.state.date} placeholder = "When did you lose/find" onChange={this.handleDateChange}/>
-          <button type='submit'>Submit</button>
+          <input type="text" name="date" value={this.state.date} placeholder = {this.state.date} onChange={this.handleDateChange}/>
+          <button type='submit'>Add animal</button>
           <div className="App">
        <input type="file" name="avatar" onChange={this.handleFileUpload} />
-       <button type="button" onClick={this.submit} > Upload </button>
+       <button type="button" onClick={this.submit} > Upload image</button>
       </div>
         </form>
       </div>
