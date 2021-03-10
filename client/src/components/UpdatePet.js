@@ -4,15 +4,19 @@ import axios from 'axios';
 import service from './api/service'
 
 export default class addPet extends Component {
+  constructor(props) {
+    super(props);
+  
+    this.state = {
 
-  state = { 
-   
   }
+  this.id = props.match.params.id;
+}
 
   componentDidMount() {
     const id = this.props.match.params.id;
     axios
-      .get(`http://localhost:5005/api/${id}`)
+      .get(`/api/${id}`)
       .then((response) => {
         console.log(response);
         this.setState({
@@ -39,8 +43,9 @@ export default class addPet extends Component {
       pictureLink,
         id: uuid()
     };
-
-  //  axios.put(`http://localhost:5005/api/${id}`, updatedPet)
+    const id = this.props.match.params.id;
+    console.log(updatedPet);
+  axios.put(`/api/${this.id}`, updatedPet)
 }
 
     handleNameChange = event => {
@@ -94,18 +99,6 @@ handleFileUpload = e => {
     });
 };
 
-handleSubmit = e => {
-  e.preventDefault();
-
-  service
-    .saveNewThing(this.state)
-    .then(res => {
-      console.log('added: ', res);
-    })
-    .catch(err => {
-      console.log('Error while adding the thing: ', err);
-    });
-};
 
 
   render() {
@@ -131,7 +124,6 @@ handleSubmit = e => {
           <div className="App">
        <input type="file" name="avatar" onChange={this.handleFileUpload} />
        <button type="button" onClick={this.submit} > Upload </button>
-  
       </div>
         </form>
       </div>

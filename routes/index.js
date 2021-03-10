@@ -37,8 +37,9 @@ router.get('/:id', (req, res) => {
 
 //updates a specific pet
 router.put('/:id', (req, res) => {
-  const {  } = req.body
-  Pets.findByIdAndUpdate( req.params.id, {  }, { new: true } )
+  const data = req.body
+  console.log(data)
+  Pets.findByIdAndUpdate( req.params.id, { ...data }, { new: true } )
   .then(pet => res.status(200).json(pet))
   .catch(err => res.json(err))
 })
