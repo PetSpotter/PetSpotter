@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import ExitToApp from '@material-ui/icons/ExitToApp';
+import Add from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,11 +24,13 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
     color: '#fff',
-    margin: '0px 10px',
-    textTransform: 'capitalize',
+    textTransform: 'none',
   },
   button: {
-    margin: '0px 10px',
+    margin: '0px 20px',
+  },
+  buttonLogout: {
+    border: '.01em solid #fff',  
   }
 }));
 
@@ -56,8 +60,8 @@ export default function NavBar (props) {
           <Button className={classes.button}><Link to='/' className={classes.link} >Home</Link></Button>
           {props.user ? (
             <>
-              <Button className={classes.button}><Link to="/addpet" className={classes.link}>Add a Pet</Link></Button>
-              <Button className={classes.button}><Link to="/" onClick={ () => handleLogout(props)} className={classes.link} >Logout</Link></Button>
+              <Button endIcon={<Add style={{color: '#fff'}}/>} className={classes.button}><Link to="/addpet" className={classes.link}>Add a Pet</Link></Button>
+              <Button variant="outlined" endIcon={<ExitToApp style={{color: '#fff'}}/>} className={classes.buttonLogout}><Link to="/" onClick={ () => handleLogout(props)} className={classes.link} >Logout</Link></Button>
             </>
           ) : (
             <>
@@ -70,20 +74,3 @@ export default function NavBar (props) {
     </div>
   )
 }
-
- {/* <nav className="nav-style">
-      <ul>
-        <li><Link to='/'>Home</Link></li>
-        {props.user ? (
-          <>
-            <li><Link to="/addpet">Add a Pet</Link></li>
-            <li><Link to="/" onClick={ () => handleLogout(props)}>Logout</Link></li>
-          </>
-          ) : (
-          <>
-            <li><Link to="/signup">Signup</Link></li>
-            <li><Link to="/login">Login</Link></li>
-          </>
-        )}
-      </ul>
-    </nav> */}
