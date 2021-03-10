@@ -58,8 +58,8 @@ export default class PetDetails extends Component {
         </p>
         <p>{this.state.animal.phone}</p>
         <p>{this.state.animal.email}</p>
-        <button onClick={this.handleDelete}>Delete this effing animal</button>
-        <Link to={`/${this.props.match.params.id}/update`}><button onClick={this.handleUpdate}>Update this effing animal</button></Link>
+        <button onClick={this.handleDelete}>Delete this pet</button>
+        <Link to={`/${this.props.match.params.id}/update`}><button onClick={this.handleUpdate}>Update</button></Link>
       </div>
     );
   }
