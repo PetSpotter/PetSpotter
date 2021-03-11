@@ -13,9 +13,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import CloudUpload from "@material-ui/icons/CloudUpload";
-import TextareaAutosize from "@material-ui/core/TextareaAutosize";
-
-
 
 export default class addPet extends Component {
   constructor(props) {
