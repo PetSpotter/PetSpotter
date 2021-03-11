@@ -62,7 +62,7 @@ export default class PetList extends React.Component {
     return (
       <div>
         <Container>
-          <Grid container spacing={3} style={{ paddingTop: "50px" }}>
+          <Grid container spacing={3} justify="center" style={{ paddingTop: "50px" }}>
             {filteredPets.map((pet) => {
               if (pet.lostOrFound === 'FOUND'|| pet.lostOrFound === 'found' || pet.lostOrFound === 'Found') 
               {
