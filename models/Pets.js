@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// TODO: Please make sure you edit the user model to whatever makes sense in this case
 const petSchema = new Schema({
   pictureLink: String,
   owner: {

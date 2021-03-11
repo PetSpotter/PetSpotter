@@ -2,18 +2,19 @@ import React, { Component } from "react";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import service from "./api/service";
+import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import PhotoCamera from "@material-ui/icons/PhotoCamera";
+import SaveIcon from "@material-ui/icons/Save";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Button from "@material-ui/core/Button";
-
-// import Avatar from "@material-ui/core/Avatar";
-// import Link from "@material-ui/core/Link";
-// import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-// import Typography from "@material-ui/core/Typography";
-// import { makeStyles } from "@material-ui/core/styles";
-
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 export default class addPet extends Component {
   state = {
@@ -27,6 +28,7 @@ export default class addPet extends Component {
     colourOfPet: "",
     pictureLink: "",
   };
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     const {
@@ -53,7 +55,9 @@ export default class addPet extends Component {
       id: uuid(),
     };
 
-    axios.post("http://localhost:5005/api/", newPet);
+    axios.post("http://localhost:5005/api/", newPet).then((res) => {
+      this.props.history.push("/");
+    });
     this.setState({
       nameOfPet: "",
       location: "",
@@ -68,6 +72,40 @@ export default class addPet extends Component {
   };
 
   handleNameChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      nameOfPet: event.target.value,
+    });
+  };
+  handleDescriptionOfPetChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      descriptionOfPet: event.target.value,
+    });
+  };
+
+  handleLocationChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      location: event.target.value,
+    });
+  };
+
+  handleDescriptionChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      textDescription: event.target.value,
+    });
+  };
+
+  handleTypeOfPetChange = (event) => {
+    console.log(event.target.value);
+    this.setState({
+      typeOfPet: event.target.value,
+    });
+  };
+
+  handleDateChange = (event) => {
     console.log(event.target.value);
     this.setState({
       nameOfPet: event.target.value,
@@ -134,131 +172,173 @@ export default class addPet extends Component {
   render() {
     return (
       <div>
-      <>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <form onSubmit={this.handleFormSubmit} style={{ width: "100%", marginTop: 'theme.spacing(3)'}} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                variant="standard"
-                required
-                fullWidth
-                id="nameOfPet"
-                label="Name of pet"
-                autoFocus
-                type="text"
-                name="nameOfPet"
-                value={this.state.nameOfPet}
-                onChange={this.handleNameChange}
-              />
-            </Grid>
+        <br />
+        <h1>Lost or found a pet? 🤭</h1>
+        <h2>We got this! 🦾</h2>
 
-            <Grid item xs={12}>
-              <TextField
-                variant="standard"
-                fullWidth
-                id="location"
-                label="Location"
-                type="text"
-                name="location"
-                value={this.state.location}
-                onChange={this.handleNameChange}
-              />
-            </Grid>
-         
-            <Grid item xs={12}>
-              <TextField
-                variant="standard"
-                fullWidth
-                id="description"
-                label="Description"
-                type="text"
-                name="description"
-                value={this.state.description}
-                onChange={this.handleNameChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="standard"
-                fullWidth
-                id="date"
-                label="Date"
-                type="text"
-                name="date"
-                value={this.state.date}
-                onChange={this.handleNameChange}
-              />
-            </Grid>
-          </Grid>
+        <br />
+        <React.Fragment>
+          <CssBaseline />
+          <Container maxWidth="sm">
+            <Typography
+              component="div"
+              style={{ backgroundColor: "#cfe8fc", height: "0vh" }}
+            />
+            <form onSubmit={this.handleFormSubmit}>
+              <label>
+                <FormControl variant="outlined">
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Lost or found{" "}
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={this.state.lostOrFound}
+                    onChange={this.handleLostFoundChange}
+                    label="lost or found"
+                  >
+                    <MenuItem value={this.state.lostOrFound}></MenuItem>
+                    <MenuItem value="lost">I have lost a pet </MenuItem>
+                    <MenuItem value="found">I have found a pet </MenuItem>
+                  </Select>
+                </FormControl>
+              </label>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="standard"
+                    required
+                    fullWidth
+                    id="Location"
+                    label="Where?"
+                    name="Location"
+                    autoComplete="Enter location"
+                    autoFocus
+                    type="text"
+                    value={this.state.location}
+                    onChange={this.handleLocationChange}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="standard"
+                    required
+                    fullWidth
+                    id="Date"
+                    label="When?"
+                    name="Date"
+                    autoComplete="Date"
+                    autoFocus
+                    type="text"
+                    value={this.state.date}
+                    onChange={this.handleDateChange}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="standard"
+                    required
+                    fullWidth
+                    id="Type"
+                    label="What kind of animal is it?"
+                    name="Type"
+                    autoComplete="Type"
+                    autoFocus
+                    type="text"
+                    value={this.state.typeOfPet}
+                    onChange={this.handleTypeOfPetChange}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="standard"
+                    fullWidth
+                    required
+                    id="Description of pet"
+                    label="Description"
+                    name="Description of pet"
+                    autoComplete="Description of pet"
+                    autoFocus
+                    type="text"
+                    value={this.state.descriptionOfPet}
+                    onChange={this.handleDescriptionOfPetChange}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="standard"
+                    fullWidth
+                    id="Name of pet"
+                    label="Name of pet"
+                    name="Name of pet"
+                    autoComplete="Name of pet"
+                    autoFocus
+                    type="text"
+                    value={this.state.nameOfPet}
+                    onChange={this.handleNameChange}
+                  />
+                </Grid>
+              </Grid>
 
-          <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="secondary"
-              style={{backgroundColor: '#E9C46A'}}
-            >
-              Submit
-            </Button>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    variant="standard"
+                    fullWidth
+                    id="Description"
+                    label="Additional comments"
+                    name="Description"
+                    autoComplete="Description"
+                    autoFocus
+                    type="text"
+                    value={this.state.textDescription}
+                    onChange={this.handleDescriptionChange}
+                  />
+                </Grid>
+              </Grid>
+              <br />
+              <div className="App">
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                >
+                  <PhotoCamera />
+                  <input type="file" onChange={this.handleFileUpload} />
+                </IconButton>
 
-        </form>
-        </Container>
-        </>
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  type="button"
+                  onClick={this.submit}
+                >
+                  {" "}
+                  Upload image{" "}
+                </Button>
+              </div>
+              <br />
 
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Name of pet:</label>
-          <input
-            type="text"
-            name="nameOfPet"
-            value={this.state.nameOfPet}
-            placeholder="Enter name if known"
-            onChange={this.handleNameChange}
-          />
-          <label>Location:</label>
-          <input
-            type="text"
-            name="location"
-            value={this.state.location}
-            placeholder="Enter location"
-            onChange={this.handleLocationChange}
-          />
-          <label>
-            <select
-              className="select-lost-found"
-              value={this.state.lostOrFound}
-              onChange={this.handleLostFoundChange}
-            >
-              <option value="lost">Lost</option>
-              <option value="found">Found</option>
-            </select>
-          </label>
-          <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={this.state.textDescription}
-            placeholder="Describe the animal"
-            onChange={this.handleDescriptionChange}
-          />
-          <label>Date:</label>
-          <input
-            type="text"
-            name="date"
-            value={this.state.date}
-            placeholder="When did you lose/find"
-            onChange={this.handleDateChange}
-          />
-          <button type="submit">Submit</button>
-          <div className="App">
-            <input type="file" name="avatar" onChange={this.handleFileUpload} />
-            <button type="button" onClick={this.submit}>
-              {" "}
-              Upload{" "}
-            </button>
-          </div>
-        </form>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                size="large"
+                startIcon={<SaveIcon />}
+              >
+                Save
+              </Button>
+            </form>
+          </Container>
+        </React.Fragment>
       </div>
     );
   }

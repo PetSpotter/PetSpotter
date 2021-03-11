@@ -85,7 +85,7 @@ export default class PetList extends React.Component {
                           </Typography>
                         </CardContent>
                         <CardContent style={{textAlign: 'right', margin:'0px', padding:'0px 15px 15px 15px'}}>
-                          <Link to={`/${pet._id}`} >
+                          <Link to={`/${pet._id}`} style={{textDecoration:'none'}} >
                             <Button variant="contained" style={{textTransform:'none', backgroundColor: '#2a9d8f', color: '#fff'}}>
                               Details
                             </Button>
