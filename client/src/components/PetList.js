@@ -81,6 +81,7 @@ export default class PetList extends React.Component {
                         borderRadius: "10px",
                       }}
                     >
+                    
                     {/* conditon to check if the pet is lost or fonud and cheange the background color accordingly  */}
                     
                       <CardContent style={{ backgroundColor: '#E76F51', padding: "0px" }}>
