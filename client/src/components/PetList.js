@@ -64,7 +64,7 @@ export default class PetList extends React.Component {
         <Container>
           <Grid container spacing={3} style={{ paddingTop: "50px" }}>
             {filteredPets.map((pet) => {
-              if (pet.lostOrFound === 'FOUND'|| pet.lostOrFound === 'found' || pet.lostOrFound === 'Found') 
+              if (pet.lostOrFound.toLowerCase() === 'found') 
               {
               return (
                 <div key={pet._id}>
@@ -135,7 +135,7 @@ export default class PetList extends React.Component {
                 </div>
               );
             }  
-            else if (pet.lostOrFound === 'LOST' || pet.lostOrFound === 'lost' || pet.lostOrFound === 'Lost') {
+            else if (pet.lostOrFound.toLowerCase() === 'lost') {
 
               return (
                 <div key={pet._id}>
@@ -162,7 +162,7 @@ export default class PetList extends React.Component {
                             padding: "7px 0px",
                           }}
                         >
-                          {pet.lostOrFound}
+                          {pet.lostOrFound.toUpperCase()}
                         </Typography>
                       </CardContent>
 
