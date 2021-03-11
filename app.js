@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "/client/build")));
 app.use(
   cors({
     // this could be multiple domains/origins, but we will allow just our React app
-    origin: ['http://localhost:3000']
+    origin: ['/']
   })
 );
 
