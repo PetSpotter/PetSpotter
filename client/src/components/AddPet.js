@@ -46,7 +46,7 @@ export default class addPet extends Component {
         id: uuid()
     };
 
-    axios.post('http://localhost:5005/api/', newPet)
+    axios.post('/api', newPet)
     .then(res => {
       this.props.history.push("/")
     }

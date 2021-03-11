@@ -19,7 +19,7 @@ export default class PetList extends React.Component {
 
   getAllPets = () => {
     axios
-      .get("http://localhost:5005/api")
+      .get("/api")
       .then(response => {
         const data = response.data;
         this.setState({
