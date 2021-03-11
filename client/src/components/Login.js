@@ -81,7 +81,7 @@ export default function Login (props) {
           </Avatar>
 
           <Typography component="h1" variant="h5">
-            Login up
+            Login
           </Typography>
 
           <form onSubmit={handleSubmit} className={classes.form} noValidate>
