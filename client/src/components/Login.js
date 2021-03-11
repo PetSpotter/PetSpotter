@@ -133,7 +133,7 @@ export default function Login (props) {
 
             <Grid container justify="flex-end">
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link to="/signup" variant="body2">
                   Still don't have an account? Sign Up
                 </Link>
               </Grid>
