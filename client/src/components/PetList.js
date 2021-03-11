@@ -30,6 +30,16 @@ export default class PetList extends React.Component {
     this.getAllPets();
   }
 
+// statusColor() {
+//     let petStatusColor = ''
+// if (pet.lostOrFound === 'found') { 
+//   return petStatusColor = "#264653" 
+// }
+// else if (pet.lostOrFound === 'lost') { petStatusColor = "#E76F51"} }
+
+
+
+
   render() {
     let filteredPets = [];
 
@@ -57,15 +67,17 @@ export default class PetList extends React.Component {
       });
     }
 
-    // let petStatusColor = ''
-    // if (pet.lostOrFound === 'found') petStatusColor = "#264653"
-    // else if (pet.lostOrFound === 'lost') petStatusColor = "#E76F51"  backgroundColor: `${petStatusColor}`,
+    
 
     return (
       <div>
         <Container>
           <Grid container spacing={3} style={{ paddingTop: "50px" }}>
             {filteredPets.map((pet) => {
+              let petStatusColor = ''
+              if (pet.lostOrFound === 'FOUND'|| pet.lostOrFound === 'found' || pet.lostOrFound === 'Found') 
+              { 
+
               return (
                 <div key={pet._id}>
                   <Grid
@@ -81,9 +93,9 @@ export default class PetList extends React.Component {
                         borderRadius: "10px",
                       }}
                     >
-                    {/* conditon to check if the pet is lost or fonud and cheange the background color accordingly  */}
                     
-                      <CardContent style={{ backgroundColor: '#E76F51', padding: "0px" }}>
+                    
+                      <CardContent style={{ backgroundColor: "#264653", padding: "0px" }}>
                         <Typography
                           variant="h6"
                           style={{
@@ -136,6 +148,82 @@ export default class PetList extends React.Component {
                   </Grid>
                 </div>
               );
+            }  
+            else if (pet.lostOrFound === 'LOST' || pet.lostOrFound === 'lost' || pet.lostOrFound === 'Lost') {
+
+              return (
+                <div key={pet._id}>
+                  <Grid
+                    item
+                    xs
+                    style={{ padding: "20px", textDecoration: "none" }}
+                  >
+                    <Card
+                      style={{
+                        minWidth: "300px",
+                        boxShadow: "0 5px 8px 0 rgba(0, 0, 0, 0.3)",
+                        backgroundColor: "#fafafa",
+                        borderRadius: "10px",
+                      }}
+                    >
+                    
+                    
+                      <CardContent style={{ backgroundColor: "#E76F51", padding: "0px" }}>
+                        <Typography
+                          variant="h6"
+                          style={{
+                            color: "#fff",
+                            fontWeight: 600,
+                            padding: "7px 0px",
+                          }}
+                        >
+                          {pet.lostOrFound}
+                        </Typography>
+                      </CardContent>
+
+                      <CardMedia
+                        style={{ height: "250px" }}
+                        image={pet.pictureLink}
+                      />
+
+                      <CardContent style={{ textAlign: "left" }}>
+                        <Typography color="primary" variant="h6">
+                          {pet.nameOfPet}
+                        </Typography>
+                        <Typography color="textSecondary" variant="subtitle2">
+                          {pet.location}
+                        </Typography>
+                      </CardContent>
+                      <CardContent
+                        style={{
+                          textAlign: "right",
+                          margin: "0px",
+                          padding: "0px 15px 15px 15px",
+                        }}
+                      >
+                        <Link
+                          to={`/${pet._id}`}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <Button
+                            variant="contained"
+                            style={{
+                              textTransform: "none",
+                              backgroundColor: "#2a9d8f",
+                              color: "#fff",
+                            }}
+                          >
+                            Details
+                          </Button>
+                        </Link>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                </div>
+              );
+
+            }
+            
             })}
           </Grid>
         </Container>
