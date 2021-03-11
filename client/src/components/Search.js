@@ -17,7 +17,7 @@ class Search extends Component {
         <h2> 🦔 🐁 🐉 Search Pets 🐉 🐁 🦔 </h2>
             <FormControl variant="outlined">
               <Select
-                style={{ width: 180}}
+                style={{ width: 200}}
                 className="select-lost-found"
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
