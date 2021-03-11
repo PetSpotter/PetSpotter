@@ -104,7 +104,7 @@ export default class PetList extends React.Component {
                             padding: "7px 0px",
                           }}
                         >
-                          {pet.lostOrFound}
+                          {pet.lostOrFound.toUpperCase()}
                         </Typography>
                       </CardContent>
 
