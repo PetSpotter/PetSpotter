@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../imageUpload.css";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import service from "./api/service";
@@ -12,7 +13,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import CloudUpload from "@material-ui/icons/CloudUpload";
-
 
 export default class addPet extends Component {
   constructor(props) {
@@ -245,8 +245,14 @@ export default class addPet extends Component {
                   aria-label="upload picture"
                   component="span"
                 >
-                  <PhotoCamera />
-                  <input type="file" onChange={this.handleFileUpload} />
+                  <PhotoCamera style={{marginRight: '12px'}}/>
+                 
+                  <input
+                    id="uploadButton"
+                    type="file"
+                    onChange={this.handleFileUpload}
+                    multiple
+                  />
                 </IconButton>
 
                 <Button

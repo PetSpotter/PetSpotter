@@ -192,7 +192,7 @@ export default class addPet extends Component {
             />
             <form onSubmit={this.handleFormSubmit}>
               <label>
-                <FormControl variant="outlined" style={{ paddingBottom: '20px'}}>
+                <FormControl variant="outlined" style={{ paddingBottom: '20px', width: '200px'}}>
                   <InputLabel id="demo-simple-select-outlined-label">
                     Lost or found{" "}
                   </InputLabel>
@@ -201,7 +201,7 @@ export default class addPet extends Component {
                     id="demo-simple-select-outlined"
                     value={this.state.lostOrFound}
                     onChange={this.handleLostFoundChange}
-                    label="lost or found"
+                    label="lost or found "
                   >
                     <MenuItem value={this.state.lostOrFound}></MenuItem>
                     <MenuItem value="LOST">I have lost a pet </MenuItem>
@@ -319,8 +319,13 @@ export default class addPet extends Component {
                   component="span"
                   style={{color: '#F4A261'}}
                 >
-                  <PhotoCamera />
-                  <input type="file" onChange={this.handleFileUpload} />
+                  <PhotoCamera style={{marginRight: '12px'}} />
+                  <input
+                    id="uploadButton"
+                    type="file"
+                    onChange={this.handleFileUpload}
+                    multiple
+                  />
                 </IconButton>
 
                 <Button
