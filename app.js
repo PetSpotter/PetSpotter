@@ -26,10 +26,13 @@ const MongoStore = require('connect-mongo').default;
 
 const mongoose = require('./db/index');
 
+const path = require('path');
+app.use(express.static(path.join(__dirname, "/client/build")));
+
 app.use(
   cors({
     // this could be multiple domains/origins, but we will allow just our React app
-    origin: ['http://localhost:3000']
+    origin: ['/']
   })
 );
 
@@ -104,5 +107,10 @@ app.use('/api/auth', auth)
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;

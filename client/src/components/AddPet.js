@@ -57,9 +57,12 @@ export default class addPet extends Component {
       id: uuid(),
     };
 
-    axios.post("http://localhost:5005/api/", newPet).then((res) => {
-      this.props.history.push("/");
-    });
+    axios.post('/api', newPet)
+    .then(res => {
+      this.props.history.push("/")
+    }
+    );
+
     this.setState({
       nameOfPet: "",
       location: "",
@@ -174,6 +177,7 @@ export default class addPet extends Component {
   render() {
     return (
       <div>
+      
         <br />
         <h1>Lost or found a pet? 🤭</h1>
         <h2>We got this! 🦾</h2>
@@ -200,11 +204,12 @@ export default class addPet extends Component {
                     label="lost or found"
                   >
                     <MenuItem value={this.state.lostOrFound}></MenuItem>
-                    <MenuItem value="lost">I have lost a pet </MenuItem>
-                    <MenuItem value="found">I have found a pet </MenuItem>
+                    <MenuItem value="LOST">I have lost a pet </MenuItem>
+                    <MenuItem value="FOUND">I have found a pet </MenuItem>
                   </Select>
                 </FormControl>
               </label>
+
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <TextField
