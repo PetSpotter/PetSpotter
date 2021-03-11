@@ -169,8 +169,8 @@ handleSubmit = e => {
         >
           <MenuItem value={this.state.lostOrFound}>
           </MenuItem>
-          <MenuItem value="lost">I have lost a pet  </MenuItem>
-          <MenuItem value="found">I have found a pet  </MenuItem>
+          <MenuItem value="LOST">I have lost a pet  </MenuItem>
+          <MenuItem value="FOUND">I have found a pet  </MenuItem>
         </Select>
       </FormControl>
         </label>
