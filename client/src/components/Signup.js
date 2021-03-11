@@ -171,8 +171,8 @@ export default function Signup (props) {
               Sign Up
             </Button>
             
-            {state.message && ( <alert variant="danger">{state.message}</alert> )}
-
+            {state.message && ( <alert variant="danger" style={{color: 'red'}}>{state.message}</alert> )}
+   
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">

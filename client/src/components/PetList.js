@@ -30,16 +30,6 @@ export default class PetList extends React.Component {
     this.getAllPets();
   }
 
-// statusColor() {
-//     let petStatusColor = ''
-// if (pet.lostOrFound === 'found') { 
-//   return petStatusColor = "#264653" 
-// }
-// else if (pet.lostOrFound === 'lost') { petStatusColor = "#E76F51"} }
-
-
-
-
   render() {
     let filteredPets = [];
 
@@ -74,10 +64,8 @@ export default class PetList extends React.Component {
         <Container>
           <Grid container spacing={3} style={{ paddingTop: "50px" }}>
             {filteredPets.map((pet) => {
-              let petStatusColor = ''
               if (pet.lostOrFound === 'FOUND'|| pet.lostOrFound === 'found' || pet.lostOrFound === 'Found') 
-              { 
-
+              {
               return (
                 <div key={pet._id}>
                   <Grid
@@ -93,8 +81,6 @@ export default class PetList extends React.Component {
                         borderRadius: "10px",
                       }}
                     >
-                    
-                    
                       <CardContent style={{ backgroundColor: "#264653", padding: "0px" }}>
                         <Typography
                           variant="h6"
@@ -166,8 +152,7 @@ export default class PetList extends React.Component {
                         borderRadius: "10px",
                       }}
                     >
-                    
-                    
+                  
                       <CardContent style={{ backgroundColor: "#E76F51", padding: "0px" }}>
                         <Typography
                           variant="h6"
