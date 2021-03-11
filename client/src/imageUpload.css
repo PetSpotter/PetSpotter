@@ -1,0 +1,28 @@
+
+input[type=file]::file-selector-button {
+  outline: none;
+  border:none;
+  padding: .8em 1em;
+  border-radius: .3em;
+  background-color: #f4a261;
+  transition: .5s;
+  color: white;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #f39c55;
+}
+
+input[type=file]::-webkit-file-upload-button {
+  outline: none;
+  border:none;
+  padding: .8em 1em;
+  border-radius: .3em;
+  background-color: #f4a261;
+  transition: .5s;
+  color: white;
+}
+
+input[type=file]::-webkit-file-upload-button:hover {
+  background-color: #f39c55;
+}
