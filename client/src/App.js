@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import NavBar from './components/NavBar';
 import Homepage from "./components/Homepage";
@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import AddPet from "./components/AddPet";
 import PetDetails from "./components/PetDetails";
+import UpdatePets from "./components/UpdatePet";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 
@@ -25,9 +26,9 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <NavBar user={this.state.user} setUser={this.setUser} />
+
           <Switch>
             <Route exact path="/" component={Homepage} />
-            <Route exact path="/login" component={Login} />
 
             <Route exact path="/addpet"
               render={props => {
@@ -36,17 +37,29 @@ export default class App extends React.Component {
               }}
             />
 
-            <Route exact path="/:id"
+            <Route
+              exact path="/signup"
+              render={props => <Signup setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/login"
+              render={props => <Login setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/:id/update"
+              render={props => <UpdatePets setUser={this.setUser} {...props} />}
+            />
+
+            <Route
+              exact path="/:id"
               render={props => {
-                if(this.state.user) return <AddPet {...props} />
-                else return <Redirect to='/signup' />
+                if(this.state.user) return (<PetDetails {...props} />)
+                else return (<Redirect to='/login' />)
               }}
             />
-            
-            <Route exact path="/signup"
-              rendeer={props => <Signup setUser={this.setUser} {...props} />}
-            />
-            
+
           </Switch>
       </div>
     );

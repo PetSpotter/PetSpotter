@@ -12,9 +12,9 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res) => {
-  const {owner, location, lostOrFound, textDescription, date, nameOfPet, descriptionOfPet, typeOfPet, colourOfPet } = req.body;
-
-  Pet.create({
+  const {owner, location, lostOrFound, textDescription, date, nameOfPet, descriptionOfPet, typeOfPet, colourOfPet, pictureLink } = req.body;
+console.log(req.body, "THIS IS WHAT WE GET FROM ADDING PET")
+  Pets.create({
     owner,
     location,
     lostOrFound,
@@ -23,20 +23,10 @@ router.post('/', (req, res) => {
     nameOfPet,
     descriptionOfPet,
     typeOfPet,
-    colourOfPet
+    colourOfPet,
+    pictureLink
   });
 })
-
-router.get('/api/auth/loggedin')
-  .then(response => {
-    const user = response.data
-    ReactDOM.render(
-      <BrowserRouter>
-        <App user={user} />
-      </BrowserRouter>,
-      document.getElementById('root')
-    )
-  })
 
 // gets a specific pet from the pet list
 router.get('/:id', (req, res) => {
@@ -45,22 +35,24 @@ router.get('/:id', (req, res) => {
   .catch(err => res.status(200).json(err))
 })
 
-// updates a specific pet
-// router.put('/:id', (req, res) => {
-//   const {  } = req.body
-//   Pets.findByIdAndUpdate( req.params.id, {  }, { new: true } )
-//   .then(pet => res.status(200).json(pet))
-//   .catch(err => res.json(err))
-// })
+//updates a specific pet
+router.put('/:id', (req, res) => {
+  const data = req.body
+  console.log(data)
+  Pets.findByIdAndUpdate( req.params.id, { ...data }, { new: true } )
+  .then(pet => res.status(200).json(pet))
+  .catch(err => res.json(err))
+})
 
-// deletes a specific pet
-// router.delete('/:id', (req, res) => {
-//   Pets.findByIdAndDelete(req.params.id)
-//     .then(pet => res.status(200).json(pet))
-//     .catch(err => res.json(err))
-// })
+router.delete('/:id', (req, res) => {
+  console.log("THIS IS THE PET WE WANNA DELETE", req.params.id)
+  Pets.findByIdAndDelete(req.params.id)
+  
+    .then(pet => res.status(200).json(pet))
+    .catch(err => res.json(err))
+})
 
-router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
+router.post('/upload', uploader.single('pictureLink'), (req, res, next) => {
   // console.log('file is: ', req.file)
  
   if (!req.file) {

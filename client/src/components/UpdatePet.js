@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import service from './api/service'
+import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import SaveIcon from '@material-ui/icons/Save';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
@@ -17,23 +17,33 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
 export default class addPet extends Component {
- 
-  state = { 
-    nameOfPet: '',
-    location: '',
-    lostOrFound: 'lost',
-    textDescription: '',
-    date: '',
-    descriptionOfPet: '',
-    typeOfPet: '',
-    colourOfPet: '',
-    pictureLink: '',
+  constructor(props) {
+    super(props);
+    this.state = {
+      animal: null,
+    }
+ this.id = props.match.params.id;
+}
+
+  componentDidMount = () =>{
+    const id = this.props.match.params.id;
+    axios
+      .get(`/api/${id}`)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          animal: response.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const { nameOfPet, location, lostOrFound, textDescription, date, descriptionOfPet, typeOfPet, colourOfPet, pictureLink, } = this.state;
-    const newPet = {
+    const updatedPet = {
       nameOfPet,
       location,
       lostOrFound,
@@ -45,25 +55,15 @@ export default class addPet extends Component {
       pictureLink,
         id: uuid()
     };
-
-    axios.post('http://localhost:5005/api/', newPet)
+  //  const id = this.props.match.params.id;
+    console.log(updatedPet);
+  axios.put(`/api/${this.id}`, updatedPet)
     .then(res => {
       this.props.history.push("/")
     }
     );
-    this.setState({
-      nameOfPet: '',
-      location: '',
-      lostOrFound: 'lost',
-      textDescription: '',
-      date: '',
-      descriptionOfPet: '',
-      typeOfPet: '',
-      colourOfPet: '',
-      pictureLink: '',
-    });
-    
-}
+  }
+
 
     handleNameChange = event => {
         console.log(event.target.value);
@@ -71,12 +71,6 @@ export default class addPet extends Component {
             nameOfPet: event.target.value
         })
     }
-    handleDescriptionOfPetChange = event => {
-      console.log(event.target.value);
-      this.setState({
-          descriptionOfPet: event.target.value
-      })
-  }
 
     handleLocationChange = event => {
         console.log(event.target.value);
@@ -84,6 +78,13 @@ export default class addPet extends Component {
             location: event.target.value
         })
     }
+
+    handleDescriptionOfPetChange = event => {
+      console.log(event.target.value);
+      this.setState({
+          descriptionOfPet: event.target.value
+      })
+  }
 
     handleDescriptionChange = event => {
       console.log(event.target.value);
@@ -106,13 +107,6 @@ export default class addPet extends Component {
     })
 }
 
-handleLostFoundChange = event => {
-  console.log(event.target.value);
-  this.setState({
-      lostOrFound: event.target.value
-  })
-}
-
 handleFileUpload = e => {
   console.log('The file to be uploaded is: ', e.target.files[0]);
 
@@ -129,56 +123,23 @@ handleFileUpload = e => {
     });
 };
 
-handleSubmit = e => {
-  e.preventDefault();
-
-  service
-    .saveNewThing(this.state)
-    .then(res => {
-      console.log('added: ', res);
-    })
-    .catch(err => {
-      console.log('Error while adding the thing: ', err);
-    });
-};
 
 
   render() {
     
     return (
       <div>
-    <br/>
-    <h1>Lost or found a pet? 🤭</h1>
-    <h2>We got this! 🦾</h2>
-  
-      <br/>
+      <h1>Update Information</h1>
       <React.Fragment>
       <CssBaseline />
       <Container maxWidth="sm">
         <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '0vh' }} />
         <form onSubmit={this.handleFormSubmit}>
-        <label>
-          <FormControl variant="outlined">
-        <InputLabel id="demo-simple-select-outlined-label">Lost or found </InputLabel>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select-outlined"
-          value={this.state.lostOrFound}
-          onChange={this.handleLostFoundChange}
-          label="lost or found"
-        >
-          <MenuItem value={this.state.lostOrFound}>
-          </MenuItem>
-          <MenuItem value="lost">I have lost a pet  </MenuItem>
-          <MenuItem value="found">I have found a pet  </MenuItem>
-        </Select>
-      </FormControl>
-        </label>
+        
         <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   variant="standard"
-                  required
                   fullWidth
                   id="Location"
                   label="Where?"
@@ -195,7 +156,7 @@ handleSubmit = e => {
               <Grid item xs={12}>
                 <TextField
                   variant="standard"
-                  required
+                  
                   fullWidth
                   id="Date"
                   label="When?"
@@ -212,7 +173,23 @@ handleSubmit = e => {
               <Grid item xs={12}>
                 <TextField
                   variant="standard"
-                  required
+                  fullWidth
+                  
+                  id="Description of pet"
+                  label="Description"
+                  name="Description of pet"
+                  autoComplete="Description of pet"
+                  autoFocus
+                  type="text"
+                  value={this.state.descriptionOfPet}
+                  onChange={this.handleDescriptionOfPetChange}
+                />
+              </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  variant="standard"
                   fullWidth
                   id="Type"
                   label="What kind of animal is it?"
@@ -222,23 +199,6 @@ handleSubmit = e => {
                   type="text"
                   value={this.state.typeOfPet}
                   onChange={this.handleTypeOfPetChange}
-                />
-              </Grid>
-              </Grid>
-              <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  variant="standard"
-                  fullWidth
-                  required
-                  id="Description of pet"
-                  label="Description"
-                  name="Description of pet"
-                  autoComplete="Description of pet"
-                  autoFocus
-                  type="text"
-                  value={this.state.descriptionOfPet}
-                  onChange={this.handleDescriptionOfPetChange}
                 />
               </Grid>
               </Grid>
@@ -294,11 +254,12 @@ handleSubmit = e => {
         size="large"
         startIcon={<SaveIcon />}
       >
-        Save
+        Save changes
       </Button>
         </form>
         </Container>
     </React.Fragment>
+      
       </div>
     )
   }

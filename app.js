@@ -2,6 +2,11 @@
 // https://www.npmjs.com/package/dotenv
 require("dotenv/config");
 
+const cors = require('cors');
+
+
+
+
 // ℹ️ Connects to the database
 require("./db");
 
@@ -20,6 +25,13 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo').default;
 
 const mongoose = require('./db/index');
+
+app.use(
+  cors({
+    // this could be multiple domains/origins, but we will allow just our React app
+    origin: ['http://localhost:3000']
+  })
+);
 
 app.use(
   session({
@@ -51,8 +63,8 @@ passport.serializeUser((user, done) => {
 // when we need the information for the user, the deserializeUser function is called with the id that we previously serialized to fetch the user from the database
 passport.deserializeUser((id, done) => {
   User.findById(id)
-    .then(dbUser => {
-      done(null, dbUser);
+    .then(user => {
+      done(null, user);
     })
     .catch(err => {
       done(err);
@@ -63,21 +75,19 @@ passport.use(
   new LocalStrategy((username, password, done) => {
     // login
     User.findOne({ username: username })
-      .then(userFromDB => {
-        if (userFromDB === null) {
+      .then(user => {
+        if (user === null) {
           // there is no user with this username
           done(null, false, { message: 'Wrong Credentials' });
-        } else if (!bcrypt.compareSync(password, userFromDB.password)) {
+        } else if (!bcrypt.compareSync(password, user.password)) {
           // the password is not matching
           done(null, false, { message: 'Wrong Credentials' });
         } else {
           // the userFromDB should now be logged in
-          done(null, userFromDB)
+          done(null, user)
         }
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(err => { console.log(err) })
   })
 )
 

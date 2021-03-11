@@ -12,3 +12,10 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+
+.search-window, .select-lost-found {
+  margin: 10px;
+  border-radius: 6px;
+  font-size: 20px;
+}
