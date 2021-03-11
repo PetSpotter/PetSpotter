@@ -15,6 +15,8 @@ import Grid from "@material-ui/core/Grid";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import CloudUpload from "@material-ui/icons/CloudUpload";
+
 
 export default class addPet extends Component {
   state = {
@@ -186,7 +188,7 @@ export default class addPet extends Component {
             />
             <form onSubmit={this.handleFormSubmit}>
               <label>
-                <FormControl variant="outlined">
+                <FormControl variant="outlined" style={{ paddingBottom: '20px'}}>
                   <InputLabel id="demo-simple-select-outlined-label">
                     Lost or found{" "}
                   </InputLabel>
@@ -310,15 +312,18 @@ export default class addPet extends Component {
                   color="primary"
                   aria-label="upload picture"
                   component="span"
+                  style={{color: '#F4A261'}}
                 >
                   <PhotoCamera />
                   <input type="file" onChange={this.handleFileUpload} />
                 </IconButton>
 
                 <Button
+                  style={{color: '#F4A261', border: ".03em solid #F4A261",}}
                   variant="outlined"
                   color="primary"
                   type="button"
+                  startIcon={<CloudUpload style={{color: '#F4A261'}}/>}
                   onClick={this.submit}
                 >
                   {" "}
@@ -328,6 +333,7 @@ export default class addPet extends Component {
               <br />
 
               <Button
+                style={{backgroundColor: '#F4A261'}}
                 variant="contained"
                 color="primary"
                 type="submit"
