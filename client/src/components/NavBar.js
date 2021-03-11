@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginLeft: theme.spacing(2),
-    margin: "0px 15px",
+    margin: "0px 7px",
   },
   buttonLogout: {
     border: ".01em solid #fff",

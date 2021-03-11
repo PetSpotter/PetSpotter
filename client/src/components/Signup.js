@@ -6,11 +6,11 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
+// import Link from '@material-ui/core/Link';
 
 
 const useStyles = makeStyles(theme => ({
@@ -174,11 +174,8 @@ export default function Signup (props) {
             {state.message && ( <alert variant="danger" style={{color: 'red'}}>{state.message}</alert> )}
    
             <Grid container justify="flex-end">
-              <Grid item>
-                <Link to="/login" variant="body2">
-                  Already have an account? Login
-                </Link>
-              </Grid>
+              <p>Already have an account?</p>
+                <a href="/login"><p><span style={{padding: '0px 6px'}}>Login</span></p></a>
             </Grid>
           </form>
         </div>

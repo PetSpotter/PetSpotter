@@ -4,12 +4,12 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+// import Link from "@material-ui/core/Link";
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Box from '@material-ui/core/Box';
 // import Checkbox from '@material-ui/core/Checkbox';
@@ -132,11 +132,8 @@ export default function Login (props) {
             {state.message && ( <alert variant="danger" style={{color: 'red'}}>{state.message}</alert> )}
 
             <Grid container justify="flex-end">
-              <Grid item>
-                <Link to="/signup" variant="body2">
-                  Still don't have an account? Sign Up
-                </Link>
-              </Grid>
+              <p>Still don't have an account?</p>
+              <a href="/signup"><p><span style={{padding: '0px 6px'}}>Sign Up</span></p></a>
             </Grid>
           </form>
         </div>

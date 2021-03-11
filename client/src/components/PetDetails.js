@@ -63,12 +63,23 @@ export default class PetDetails extends Component {
 
           <Container  maxWidth="sm">
             <h1>Pet Details </h1>
-            <h3>{this.state.animal.nameOfPet}</h3>
+            <Typography
+              component="div"
+              style={{ backgroundColor: "#ecf1f3", borderRadius: '10px' }}
+            >
+              <List>
+                <ListItem style={{lineHeight: '0.4em'}}>
+                  <h3>{this.state.animal.nameOfPet}</h3>
+                </ListItem>
+              </List>
+              </Typography>
+
             <GridList cellHeight={400} cols={1}>
               <GridListTile>
-                <img src={this.state.animal.pictureLink} alt="pet" style={{paddingBottom: '20px'}} />
+                <img src={this.state.animal.pictureLink} alt="pet" style={{padding: '20px 0px 20px 0px'}} />
               </GridListTile>
             </GridList>
+
           </Container>
 
           <Container maxWidth="sm">
@@ -77,49 +88,49 @@ export default class PetDetails extends Component {
               style={{ backgroundColor: "#ecf1f3", borderRadius: '10px' }}
             >
               <List component="nav" aria-label="main mailbox folders">
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <HighlightIcon />
                   </ListItemIcon>
                   <ListItemText primary={this.state.animal.lostOrFound} />
                 </ListItem>
                 <Divider />
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <TodayIcon />
                   </ListItemIcon>
                   <ListItemText primary={this.state.animal.date} />
                 </ListItem>
                 <Divider />
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <LocationOnIcon />
                   </ListItemIcon>
                   <ListItemText primary={this.state.animal.location} />
                 </ListItem>
                 <Divider />
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <PetsIcon />
                   </ListItemIcon>
                   <ListItemText primary={this.state.animal.typeOfPet} />
                 </ListItem>
                 <Divider />
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <BorderColorIcon />
                   </ListItemIcon>
                   <ListItemText primary={this.state.animal.descriptionOfPet} />
                 </ListItem>
                 <Divider />
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <CommentIcon />
                   </ListItemIcon>
                   <ListItemText primary={this.state.animal.textDescription} />
                 </ListItem>
                 <Divider />
-                <ListItem button>
+                <ListItem>
                   <ListItemIcon>
                     <DraftsIcon />
                   </ListItemIcon>
